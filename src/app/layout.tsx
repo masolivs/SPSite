@@ -11,7 +11,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <body>
           <div>
             <header>
-              <h1>Teste</h1>
               <MainContent /> 
             </header>
             <main>{children}</main> 

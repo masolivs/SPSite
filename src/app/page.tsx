@@ -1,7 +1,9 @@
-import Image from "next/image";
+import Team from './components/team';
 
 export default function Home() {
   return (
-    <h1>Oi</h1>
+    <div>
+      <Team />
+    </div>
   );
 }
