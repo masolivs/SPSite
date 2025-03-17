@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
 @import "tailwindcss";
 
 @font-face {
   font-family: 'Tahoma';
-  src: url('/fonts/tahoma-regular.ttf') format('truetype');
+  src: url('/fonts/Tahoma Regular font.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -11,7 +10,7 @@
 
 @font-face {
   font-family: 'Tahoma';
-  src: url('/fonts/tahoma-bold.ttf') format('truetype');
+  src: url('/fonts/TAHOMABD.TTF') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -19,7 +18,7 @@
 
 @font-face {
   font-family: 'BodrumSans';
-  src: url('/fonts/bodrumsans-regular.otf') format('opentype');
+  src: url('/fonts/Bülent Yüksel - BodrumSans-14Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -27,7 +26,23 @@
 
 @font-face {
   font-family: 'BodrumSans';
-  src: url('/fonts/bodrumsans-bold.otf') format('opentype');
+  src: url('/fonts/Bülent Yüksel - BodrumSans-16Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DmSerifDisplay';
+  src: url('/fonts/DMSerifDisplay-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DmSerifDisplay';
+  src: url('/fonts/DMSerifDisplay-Regular.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
