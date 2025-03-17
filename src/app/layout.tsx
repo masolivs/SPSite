@@ -3,6 +3,7 @@
 import { SessionProvider } from "next-auth/react";  
 import { useSession, signOut } from "next-auth/react";  
 import Link from "next/link";
+import './styles/globals.css';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
