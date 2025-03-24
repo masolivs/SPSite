@@ -1,6 +1,7 @@
 'use client';
 
 import Navbar from "../components/navbar";
+import Footer from "../components/footer";
 import Link from "next/link";
 
 export default function CompliancePage() {
@@ -12,7 +13,6 @@ export default function CompliancePage() {
           <h3 className="font-bodrumsans text-dark text-[18px] sm:text-[20px] tracking-widest uppercase mb-4">
             COMPLIANCE
           </h3>
-
           <h1 className="font-dm-serif text-dark text-[48px] sm:text-[80px] font-bold leading-tight mb-10">
             Lorem Ipsum
           </h1>
@@ -23,7 +23,6 @@ export default function CompliancePage() {
             <br /><br />
             Proin placerat nibh quis scelerisque condimentum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In sagittis justo et mi pellentesque, ac feugiat nulla scelerisque. Nullam volutpat vehicula interdum. Phasellus a ex orci. Quisque nisl nisl, molestie nec augue a, tempor mollis diam. Nam scelerisque non est sed consectetur. Sed molestie tincidunt tortor, nec tristique orci malesuada eu.
           </p>
-
           <div className="mt-16 text-right">
             <Link
               href="/"
@@ -34,6 +33,7 @@ export default function CompliancePage() {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }
