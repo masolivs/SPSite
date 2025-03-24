@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 const Navbar = () => {
-  const sections = ['sobre', 'atuacao', 'premiacoes', 'compliance', 'equipe', 'blog', 'contato'];
+  const sections = ['sobre', 'atuação', 'premiações', 'compliance', 'equipe', 'blog', 'contato'];
   const [activeSection, setActiveSection] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
