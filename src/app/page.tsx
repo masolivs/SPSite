@@ -1,11 +1,11 @@
-import Team from './components/team';
-import Navbar from './components/navbar'
+import Navbar from './components/navbar';
+import Herosection from './components/herosection';
 
 export default function Home() {
   return (
     <div>
           <Navbar />
-          <Team />
+          <Herosection />
     </div>
 
 
