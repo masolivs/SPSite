@@ -4,10 +4,10 @@ export default function Contato() {
   return (
     <section id="contato" className="bg-dark text-white py-16">
       <div className="px-6 sm:px-24 mb-10">
-        <h3 className="font-bodrumsans text-sm tracking-widest text-light uppercase">
+        <h3 className="font-bodrumsans text-[18px] sm:text-[20px] tracking-widest text-light uppercase">
           FALE CONOSCO
         </h3>
-        <h2 className="font-dm-serif mt-2 text-5xl sm:text-6xl text-light font-bold">
+        <h2 className="font-dm-serif mt-2 text-[48px] sm:text-[80px] text-light font-bold">
           Contato
         </h2>
       </div>
