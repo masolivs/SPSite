@@ -13,11 +13,11 @@ export default function Compliance() {
   return (
     <section
       id="compliance"
-      className="bg-gray py-32 scroll-mt-32"
+      className="bg-gray py-34 scroll-mt-34"
     >
       <div
         data-aos="fade-up"
-        className="pl-8 sm:pl-24 pr-6 sm:pr-12"
+        className="px-6 sm:px-24"
       >
         <h3 className="font-bodrumsans text-dark text-[18px] sm:text-[20px] mb-4 tracking-widest uppercase">
           COMPLIANCE

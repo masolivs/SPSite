@@ -8,7 +8,7 @@ export default function Blog() {
                     BLOG
                 </h3>
                 <h2 className="font-dm-serif mt-2 text-[48px] sm:text-[80px] font-bold">
-                Lorem Impsum
+                Lorem Ipsum
                 </h2>
 
             </div>
