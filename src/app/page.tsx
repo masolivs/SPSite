@@ -1,5 +1,3 @@
-'use client'
-
 import React from 'react';
 import Navbar from './components/navbar';
 import Herosection from './components/herosection';
@@ -10,6 +8,7 @@ import Footer from './components/footer';
 import Atuacao from './components/atuacao';
 import Premiacao from './components/premiacoes';
 import Blog from './components/blog';
+import Team from './components/team';
 
 export default function Home() {
   return (
@@ -20,6 +19,7 @@ export default function Home() {
           <Atuacao />
           <Premiacao />
           <Compliance />
+          <Team />
           <Blog />
           <Contato />
           <Footer />
