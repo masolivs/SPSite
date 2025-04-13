@@ -167,13 +167,13 @@ export default function Blog() {
             )}
           </div>
 
-          <div className="mt-10">
-            <div className="flex items-center gap-2 max-w-[100px] text-sm ml-6">
-              <span>{currentIndex + 1}</span>
-              <div className="flex-1 h-px bg-black" />
-              <span>{maxCount}</span>
-            </div>
+          <div className="mt-10 px-6 sm:px-24 flex justify-end">
+          <div className="flex items-center gap-4 text-sm min-w-[120px]">
+            <span>{currentIndex + 1}</span>
+            <div className="h-px bg-gray flex-grow" />
+            <span>{maxCount}</span>
           </div>
+        </div>
         </div>
       </div>
 
