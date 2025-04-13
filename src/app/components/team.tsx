@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight } from 'phosphor-react';
 import Image from 'next/image';
+import TeamModal from './teamModal';
 
 async function fetchEmployees() {
   const res = await fetch('/api/employees', { cache: 'no-store' });
@@ -17,13 +18,15 @@ interface Employee {
   description: string;
   image: string;
   linkedin: string;
-  createdAt: string; 
+  createdAt: string;
 }
 
 export default function Team() {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [isDesktop, setIsDesktop] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -41,9 +44,9 @@ export default function Team() {
       try {
         const data = await fetchEmployees();
         const sorted = data.sort(
-          (a: Employee, b: Employee) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+          (a: Employee, b: Employee) =>
+            new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
         );
-
         setEmployees(sorted);
       } catch (error) {
         console.error('Erro ao carregar funcionários:', error);
@@ -77,6 +80,16 @@ export default function Team() {
       const index = Math.round(scrollLeft / slideWidth);
       setCurrentIndex(index);
     }
+  };
+
+  const handleOpenModal = (employee: Employee) => {
+    setSelectedEmployee(employee);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedEmployee(null);
+    setIsModalOpen(false);
   };
 
   return (
@@ -130,7 +143,8 @@ export default function Team() {
                     {group.map((employee) => (
                       <div
                         key={employee.id}
-                        className="w-[555px] flex flex-col"
+                        className="w-[555px] flex flex-col cursor-pointer"
+                        onClick={() => handleOpenModal(employee)}
                       >
                         <div className="relative w-full h-[770px]">
                           <Image
@@ -140,29 +154,6 @@ export default function Team() {
                             className="object-cover"
                           />
                         </div>
-                        <h2 className="font-tahoma text-[24px] sm:text-[28px] mt-6 text-color-gray">
-                          {employee.name}
-                        </h2>
-                        <p className="font-tahoma text-[16px] sm:text-[20px] mt-1 text-color-gray">
-                          {employee.role}
-                        </p>
-                        <p className="font-tahoma text-[14px] sm:text-[16px] text-color-gray mt-2">
-                          {employee.description}
-                        </p>
-                        <a
-                          href={employee.linkedin}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="mt-4 inline-block"
-                        >
-                          <Image
-                            src="/linkedin.png"
-                            alt="LinkedIn"
-                            width={49}
-                            height={49}
-                            className="object-contain"
-                          />
-                        </a>
                       </div>
                     ))}
                   </div>
@@ -180,7 +171,10 @@ export default function Team() {
                   key={employee.id}
                   className="snap-start flex-shrink-0 w-full max-w-full flex justify-center"
                 >
-                  <div className="w-[320px] flex flex-col">
+                  <div
+                    className="w-[320px] flex flex-col cursor-pointer"
+                    onClick={() => handleOpenModal(employee)}
+                  >
                     <div className="relative w-full h-[400px]">
                       <Image
                         src={employee.image || '/default-avatar.png'}
@@ -189,29 +183,6 @@ export default function Team() {
                         className="object-cover"
                       />
                     </div>
-                    <h2 className="font-tahoma text-[24px] mt-4 text-color-gray">
-                      {employee.name}
-                    </h2>
-                    <p className="font-tahoma text-[18px] text-color-gray">
-                      {employee.role}
-                    </p>
-                    <p className="font-tahoma text-[14px] text-color-gray mt-2">
-                      {employee.description}
-                    </p>
-                    <a
-                      href={employee.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-4 inline-block"
-                    >
-                      <Image
-                        src="/linkedin.png"
-                        alt="LinkedIn"
-                        width={49}
-                        height={49}
-                        className="object-contain"
-                      />
-                    </a>
                   </div>
                 </div>
               ))}
@@ -227,6 +198,11 @@ export default function Team() {
           </div>
         </div>
       </div>
+      <TeamModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        employee={selectedEmployee}
+      />
 
       <style jsx>{`
         .scrollbar-hide {
