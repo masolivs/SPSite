@@ -48,7 +48,7 @@ export default function Blog() {
   return (
     <section id="blog" className="bg-white py-16">
       <div className="px-6 sm:px-24 flex flex-col lg:flex-row gap-12 items-start">
-        <div className="flex-1 max-w-[600px] sm::mr-20 "> 
+        <div className="flex-1 max-w-[600px] sm::mr-20"> 
           <h3 className="text-[16px] sm:text-[20px] uppercase tracking-wider font-bodrumsans mb-2">
             BLOG
           </h3>
@@ -87,20 +87,20 @@ export default function Blog() {
           </form>
         </div>
 
-        <div className="relative w-full lg:flex-1">
+        <div className="relative w-full lg:flex-1 sm:-right-[105px]">
           {isDesktop && (
             <>
               <button
                 onClick={prev}
                 disabled={currentIndex === 0}
-                className="absolute top-1/2 -translate-y-1/2 left-8 z-20 p-2 text-black disabled:opacity-30 cursor-pointer"
+                className="absolute top-1/2 -translate-y-1/2 left-6 z-20 p-2 text-black disabled:opacity-30 cursor-pointer"
               >
                 <ArrowLeft size={48} weight="bold" />
               </button>
               <button
                 onClick={next}
                 disabled={currentIndex >= totalPages - 1}
-                className="absolute top-1/2 -translate-y-1/2 right-8 z-20 p-2 text-black disabled:opacity-30 cursor-pointer"
+                className="absolute top-1/2 -translate-y-1/2 right-6 z-20 p-2 text-black disabled:opacity-30 cursor-pointer"
               >
                 <ArrowRight size={48} weight="bold" />
               </button>
