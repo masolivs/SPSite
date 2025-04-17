@@ -11,19 +11,19 @@ export default function Contato() {
           Contato
         </h2>
       </div>
-      <div className="flex flex-col lg:flex-row lg:items-start gap-28">
+      <div className="flex flex-col lg:flex-row gap-28">
         <div className="flex-1">
-          <img
-            src="/fb.png"
-            alt="imagem de fundo"
-            className="w-full h-auto object-top"
-          />
-        </div>
-        <div className="flex-1 px-6 sm:px-24 font-tahoma text-light space-y-10">
-          <div>
-            <h3 className="font-bold sm:text-[35px] text-2xl">Telefone</h3>
-            <p className="sm:text-3xl text-lg">3000-0000</p>
+          <div className="bg-white w-full h-full">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3837.9341087827293!2d-47.8639124248686!3d-15.860060084789506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a25003dc5c913%3A0x7d81865a8e22c9f5!2sSilva%20Prado%20Advogados!5e0!3m2!1spt-BR!2sbr!4v1744909866339!5m2!1spt-BR!2sbr"
+              className="w-full h-[300px] sm:h-[400px] lg:h-[500px] border-0"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
+        </div>
+        <div className="flex-1 px-6 sm:px-24 font-tahoma text-light space-y-10 lg:self-center">
           <div>
             <h3 className="font-bold sm:text-[35px] text-2xl">Email</h3>
             <p className="sm:text-3xl text-lg">email@email.com</p>

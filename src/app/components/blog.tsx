@@ -87,7 +87,7 @@ export default function Blog() {
           </form>
         </div>
 
-        <div className="relative w-full lg:flex-1 sm:-right-[100px]">
+        <div className="relative w-full lg:flex-1 sm:-right-[90px]">
           {isDesktop && (
             <>
               <button
