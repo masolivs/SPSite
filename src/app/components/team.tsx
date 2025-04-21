@@ -101,7 +101,7 @@ export default function Team() {
           EQUIPE
         </h3>
         <h1 className="font-dm-serif mt-2 text-[48px] sm:text-[80px] font-bold">
-          Nossa Equipe
+          Conheça nossos profissionais
         </h1>
         </FadeInSection>
       </div>

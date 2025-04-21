@@ -9,7 +9,7 @@ const Navbar = () => {
   const sectionTitles: Record<string, string> = {
     sobre: 'SOBRE',
     atuacao: 'ATUAÇÃO',
-    premiacoes: 'PREMIAÇÕES',
+    premiacoes: 'CONQUISTAS',
     compliance: 'COMPLIANCE',
     equipe: 'EQUIPE',
     blog: 'BLOG',

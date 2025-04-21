@@ -17,23 +17,23 @@ export default function Compliance() {
         </FadeInSection>
         <FadeInSection>
           <h2 className="font-dm-serif text-dark font-bold text-[48px] sm:text-[80px] mb-6 leading-tight">
-            Lorem Ipsum
+            Integridade como valor essencial
           </h2>
         </FadeInSection>
         <FadeInSection>
           <p className="font-tahoma text-dark text-[20px] sm:text-[32px] leading-relaxed mb-8">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dapibus consequat enim,
-            ac posuere nisi pulvinar vitae. Duis fringilla et leo sit amet rutrum. Phasellus
-            efficitur magna sit amet nulla malesuada, eget ultricies neque gravida.
+            Ética, responsabilidade e transparência estão no centro de tudo o que fazemos. 
+            Nosso Programa de Compliance estrutura diretrizes claras, promove a cultura da integridade 
+            e assegura a conformidade com as melhores práticas anticorrupção.
           </p>
         </FadeInSection>
         <FadeInSection>
           <div className="text-right">
             <Link
               href="/compliance"
-              className="font-dm-serif text-[32px] sm:text-[48px] font-bold text-brown-dark hover:opacity-80 transition"
+              className="font-dm-serif text-[20px] sm:text-[40px] font-bold text-brown-dark hover:opacity-80 transition"
             >
-              Lorem Ipsum
+              Saiba mais
             </Link>
           </div>
         </FadeInSection>

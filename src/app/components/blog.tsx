@@ -85,15 +85,15 @@ export default function Blog() {
             BLOG
           </h3>
           <h2 className="font-dm-serif text-[48px] sm:text-[74px] font-bold leading-tight mb-6">
-            Lorem Ipsum
+            Publicações
           </h2>
           <p className="font-tahoma text-[16px] sm:text-[24px] mb-10">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula felis bibendum eros suscipit congue.
+            Confira os conteúdos do nosso LinkedIn sobre temas jurídicos relevantes, reflexões e atualizações do Silva Prado.
           </p>
           <div className="h-[4px] bg-[#C0B9B3] w-full my-10"></div>
           <h3 className="font-dm-serif text-[24px] sm:text-[32px] mb-2 font-bold">Newsletter</h3>
-          <p className="font-tahoma text-[16px] sm:text-[24px] mb-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          <p className="font-tahoma text-[16px] sm:text-[22px] mb-4">
+            Inscreva-se com seu e-mail e acompanhe as principais notícias, artigos e conteúdos do Silva Prado diretamente na sua caixa de entrada.
           </p>
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row">
             <input
@@ -106,9 +106,9 @@ export default function Blog() {
             />
             <button
               type="submit"
-              className="bg-[#bfb1a5] px-2 py-2 font-tahoma text-base hover:opacity-90 transition cursor-pointer"
+              className="bg-[#bfb1a5] px-2 py-2 font-tahoma text-base hover:opacity-90 transition cursor-pointer font-bold"
             >
-              Lorem Ipsum
+              Inscrever-se
             </button>
           </form>
         </FadeInSection>

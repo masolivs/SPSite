@@ -61,10 +61,10 @@ export default function Premiacao() {
       <div className="px-6 sm:px-24 mb-10">
         <FadeInSection>
         <h3 className="font-bodrumsans text-[18px] sm:text-[20px] tracking-widest uppercase">
-          PREMIAÇÕES
+          CONQUISTAS
         </h3>
         <h2 className="font-dm-serif mt-2 text-[48px] sm:text-[80px] font-bold">
-          Lorem Ipsum
+          Reconhecimentos Institucionais
         </h2>
         </FadeInSection>
       </div>
