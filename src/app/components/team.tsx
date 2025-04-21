@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight } from 'phosphor-react';
 import Image from 'next/image';
 import TeamModal from './teamModal';
+import FadeInSection from './fadeInSection';
 
 async function fetchEmployees() {
   const res = await fetch('/api/employees', { cache: 'no-store' });
@@ -95,12 +96,14 @@ export default function Team() {
   return (
     <section id="equipe" className="bg-dark text-gray py-20">
       <div className="px-6 sm:px-24 mb-10">
+        <FadeInSection>
         <h3 className="font-bodrumsans text-[18px] sm:text-[20px] tracking-widest uppercase">
           EQUIPE
         </h3>
         <h1 className="font-dm-serif mt-2 text-[48px] sm:text-[80px] font-bold">
           Nossa Equipe
         </h1>
+        </FadeInSection>
       </div>
 
       <div className="relative w-full">

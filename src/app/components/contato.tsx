@@ -1,16 +1,21 @@
 'use client'
 
+import FadeInSection from "./fadeInSection"
+
 export default function Contato() {
   return (
     <section id="contato" className="bg-dark text-white py-16">
       <div className="px-6 sm:px-24 mb-2">
-        <h3 className="font-bodrumsans text-[18px] sm:text-[20px] tracking-widest text-light uppercase">
-          FALE CONOSCO
-        </h3>
-        <h2 className="font-dm-serif mt-2 text-[48px] sm:text-[80px] text-light font-bold">
-          Contato
-        </h2>
+        <FadeInSection>
+          <h3 className="font-bodrumsans text-[18px] sm:text-[20px] tracking-widest text-light uppercase">
+            FALE CONOSCO
+          </h3>
+          <h2 className="font-dm-serif mt-2 text-[48px] sm:text-[80px] text-light font-bold">
+            Contato
+          </h2>
+        </FadeInSection>
       </div>
+
       <div className="flex flex-col lg:flex-row gap-12">
         <div className="flex-1 lg:flex-[1.1]">
           <div className="border-20 border-white w-full h-full">
@@ -23,23 +28,32 @@ export default function Contato() {
             ></iframe>
           </div>
         </div>
+
         <div className="flex-1 lg:flex-[0.9] px-6 sm:px-24 font-tahoma text-light space-y-10 lg:self-center">
-          <div>
-            <h3 className="font-bold sm:text-[35px] text-2xl">Email</h3>
-            <p className="sm:text-3xl text-lg">contato@silvapradoadv.com.br</p>
-          </div>
-          <div>
-            <h3 className="font-bold sm:text-[35px] text-2xl">Endereço</h3>
-            <p className="sm:text-3xl text-lg">
-            St. de Habitações Individuais Sul QI 19 Silva Prado Advogados - Lago Sul, Brasília - DF
-            </p>
-          </div>
-          <div>
-            <h3 className="font-bold sm:text-[35px] text-2xl">Horário de Funcionamento</h3>
-            <p className="sm:text-3xl text-lg">
-              Segunda a sexta, de 8h às 18h.
-            </p>
-          </div>
+          <FadeInSection>
+            <div>
+              <h3 className="font-bold sm:text-[35px] text-2xl">Email</h3>
+              <p className="sm:text-3xl text-lg">contato@silvapradoadv.com.br</p>
+            </div>
+          </FadeInSection>
+
+          <FadeInSection>
+            <div>
+              <h3 className="font-bold sm:text-[35px] text-2xl">Endereço</h3>
+              <p className="sm:text-3xl text-lg">
+                St. de Habitações Individuais Sul QI 19 Silva Prado Advogados - Lago Sul, Brasília - DF
+              </p>
+            </div>
+          </FadeInSection>
+
+          <FadeInSection>
+            <div>
+              <h3 className="font-bold sm:text-[35px] text-2xl">Horário de Funcionamento</h3>
+              <p className="sm:text-3xl text-lg">
+                Segunda a sexta, de 8h às 18h.
+              </p>
+            </div>
+          </FadeInSection>
         </div>
       </div>
     </section>

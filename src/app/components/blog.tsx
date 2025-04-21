@@ -1,7 +1,8 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
-import { ArrowLeft, ArrowRight } from 'phosphor-react'
+import { useEffect, useRef, useState } from 'react';
+import { ArrowLeft, ArrowRight } from 'phosphor-react';
+import FadeInSection from './fadeInSection';
 
 export default function Blog() {
   const [email, setEmail] = useState("")
@@ -79,6 +80,7 @@ export default function Blog() {
     <section id="blog" className="bg-white py-16 relative">
       <div className="px-6 sm:px-24 flex flex-col lg:flex-row gap-12 items-start">
         <div className="flex-1 max-w-[600px]">
+          <FadeInSection>
           <h3 className="text-[16px] sm:text-[20px] uppercase tracking-wider font-bodrumsans mb-2">
             BLOG
           </h3>
@@ -109,6 +111,7 @@ export default function Blog() {
               Lorem Ipsum
             </button>
           </form>
+        </FadeInSection>
         </div>
 
         <div className="relative w-full lg:flex-1 sm:-right-[90px]">
