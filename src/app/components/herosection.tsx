@@ -11,7 +11,7 @@ export default function Herosection() {
         </h2>
         <h1 className="font-dm-serif font-bold text-[60px] sm:text-[128px] text-brown-dark leading-tight">
           <Typewriter
-            words={['Inovação.', 'Rigor Técnico.', 'Integridade.']}
+            words={['Inovação.', 'Técnica.', 'Integridade.', 'Compliance.']}
             loop={true}
             cursor
             cursorStyle="|"

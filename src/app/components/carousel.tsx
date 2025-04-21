@@ -95,7 +95,7 @@ export default function Carousel({
                   {groupItems.map((item, index) => (
                     <div
                       key={index}
-                      className="bg-white w-[700px] h-auto whitespace-normal break-words"
+                      className="bg-white w-[680px] h-auto whitespace-normal break-words pr-16"
                     >
                       {item}
                     </div>
