@@ -9,6 +9,7 @@ import Atuacao from './components/atuacao';
 import Premiacao from './components/premiacoes';
 import Blog from './components/blog';
 import Team from './components/team';
+import FloatingSocialIcons from './components/floatingSocialIcons';
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
           <Blog />
           <Contato />
           <Footer />
+          <FloatingSocialIcons />
     </div>
   );
 }
