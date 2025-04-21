@@ -41,7 +41,7 @@ export default function Contato() {
             <div>
               <h3 className="font-bold sm:text-[35px] text-2xl">Endereço</h3>
               <p className="sm:text-3xl text-lg">
-                St. de Habitações Individuais Sul QI 19 Silva Prado Advogados - Lago Sul, Brasília - DF
+                St. de Habitações Individuais Sul QI 19 - Lago Sul, Brasília - DF
               </p>
             </div>
           </FadeInSection>
