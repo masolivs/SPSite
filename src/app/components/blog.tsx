@@ -7,6 +7,7 @@ export default function Blog() {
   const [email, setEmail] = useState("")
   const [isDesktop, setIsDesktop] = useState(true)
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [modal, setModal] = useState<{ type: 'success' | 'error'; message: string } | null>(null)
   const mobileScrollRef = useRef<HTMLDivElement>(null)
 
   const blogPosts = ['/t1.png', '/t2.png', '/t1.png']
@@ -19,6 +20,11 @@ export default function Blog() {
     window.addEventListener('resize', checkScreen)
     return () => window.removeEventListener('resize', checkScreen)
   }, [])
+
+  const showModal = (type: 'success' | 'error', message: string) => {
+    setModal({ type, message })
+    setTimeout(() => setModal(null), 4000)
+  }
 
   const itemsPerView = isDesktop ? 2 : 1
   const totalPages = Math.ceil(blogPosts.length / itemsPerView)
@@ -45,10 +51,34 @@ export default function Blog() {
     }
   }
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        showModal('error', data.error || 'Erro ao inscrever.')
+        return
+      }
+
+      showModal('success', data.message || 'Inscrição realizada com sucesso!')
+      setEmail('')
+    } catch (err) {
+      console.error(err)
+      showModal('error', 'Erro ao enviar inscrição.')
+    }
+  }
+
   return (
-    <section id="blog" className="bg-white py-16">
+    <section id="blog" className="bg-white py-16 relative">
       <div className="px-6 sm:px-24 flex flex-col lg:flex-row gap-12 items-start">
-        <div className="flex-1 max-w-[600px] sm::mr-20"> 
+        <div className="flex-1 max-w-[600px]">
           <h3 className="text-[16px] sm:text-[20px] uppercase tracking-wider font-bodrumsans mb-2">
             BLOG
           </h3>
@@ -63,28 +93,7 @@ export default function Blog() {
           <p className="font-tahoma text-[16px] sm:text-[24px] mb-4">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
-          <form
-            onSubmit={ async (e) => {
-              e.preventDefault()
-              try {
-                const res = await fetch('/api/newsletter', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({ email }),
-                })
-          
-                const data = await res.json()
-                alert(data.message || 'Inscrição enviada!')
-                setEmail('')
-              } catch (err) {
-                alert('Erro ao enviar inscrição.')
-                console.error(err)
-              }
-            }}
-            className="flex flex-col sm:flex-row"
-          >
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row">
             <input
               type="email"
               required
@@ -183,14 +192,33 @@ export default function Blog() {
           </div>
 
           <div className="mt-10 px-6 sm:px-24 flex justify-end">
-          <div className="flex items-center gap-4 text-sm min-w-[120px]">
-            <span>{currentIndex + 1}</span>
-            <div className="h-px bg-gray flex-grow" />
-            <span>{maxCount}</span>
+            <div className="flex items-center gap-4 text-sm min-w-[120px]">
+              <span>{currentIndex + 1}</span>
+              <div className="h-px bg-gray flex-grow" />
+              <span>{maxCount}</span>
+            </div>
           </div>
         </div>
-        </div>
       </div>
+
+      {modal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 animate-fade">
+          <div className={`bg-white  shadow-lg p-6 max-w-sm w-full text-center border-t-4 ${
+            modal.type === 'success' ? 'border-green-500' : 'border-red-500'
+          }`}>
+            <div className="text-4xl mb-2">
+              {modal.type === 'success' ? '✅' : '❌'}
+            </div>
+            <p className="text-lg font-medium text-dark mb-4">{modal.message}</p>
+            <button
+              onClick={() => setModal(null)}
+              className="text-sm text-gray-500 hover:underline cursor-pointer"
+            >
+              Fechar
+            </button>
+          </div>
+        </div>
+      )}
 
       <style jsx>{`
         .scrollbar-hide {
@@ -198,6 +226,16 @@ export default function Blog() {
         }
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
+        }
+      `}</style>
+
+      <style jsx global>{`
+        @keyframes fade {
+          from { opacity: 0 }
+          to { opacity: 1 }
+        }
+        .animate-fade {
+          animation: fade 0.3s ease-in-out;
         }
       `}</style>
     </section>
