@@ -13,7 +13,7 @@ export default function Compliance() {
   return (
     <section
       id="compliance"
-      className="bg-gray py-34 scroll-mt-34"
+      className="bg-gray py-24 scroll-mt-24"
     >
       <div
         data-aos="fade-up"
