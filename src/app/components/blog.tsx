@@ -64,9 +64,24 @@ export default function Blog() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
           <form
-            onSubmit={(e) => {
+            onSubmit={ async (e) => {
               e.preventDefault()
-              console.log('Enviar email para Resend:', email)
+              try {
+                const res = await fetch('/api/newsletter', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({ email }),
+                })
+          
+                const data = await res.json()
+                alert(data.message || 'Inscrição enviada!')
+                setEmail('')
+              } catch (err) {
+                alert('Erro ao enviar inscrição.')
+                console.error(err)
+              }
             }}
             className="flex flex-col sm:flex-row"
           >
@@ -95,14 +110,14 @@ export default function Blog() {
                 disabled={currentIndex === 0}
                 className="absolute top-1/2 -translate-y-1/2 left-6 z-20 p-2 text-black disabled:opacity-30 cursor-pointer"
               >
-                <ArrowLeft size={48} weight="bold" />
+                <ArrowLeft size={48} />
               </button>
               <button
                 onClick={next}
                 disabled={currentIndex >= totalPages - 1}
                 className="absolute top-1/2 -translate-y-1/2 right-6 z-20 p-2 text-black disabled:opacity-30 cursor-pointer"
               >
-                <ArrowRight size={48} weight="bold" />
+                <ArrowRight size={48} />
               </button>
             </>
           )}
