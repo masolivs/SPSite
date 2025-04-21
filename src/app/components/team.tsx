@@ -138,7 +138,7 @@ export default function Team() {
                 return (
                   <div
                     key={groupIndex}
-                    className="min-w-full flex flex-shrink-0 justify-start gap-[72px] pr-[72px]"
+                    className="min-w-full flex flex-shrink-0 justify-center gap-[72px] pr-[72px]"
                   >
                     {group.map((employee) => (
                       <div
