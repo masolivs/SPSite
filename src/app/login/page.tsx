@@ -38,7 +38,7 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-off-white">
       <div className="w-full md:w-11/12 bg-dark flex items-center justify-center p-20">
-        <img src="/logob.png" alt="Logo" className="w-48 md:w-auto" />
+        <img src="img/logob.png" alt="Logo" className="w-48 md:w-auto" />
       </div>
 
       <div className="w-full md:w-1/2 bg-off-white flex items-center justify-center py-16 px-6">

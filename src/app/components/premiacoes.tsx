@@ -7,14 +7,12 @@ import FadeInSection from './fadeInSection';
 
 export default function Premiacao() {
   const imageSources = [
-    '/fc.png',
-    '/fc.png',
-    '/fc.png',
-    '/fc.png',
-    '/fc.png',
-    '/fc.png',
-    '/fc.png',
-    '/fc.png',
+    '/img/1pactobr.PNG',
+    '/img/2esc2025.PNG',
+    '/img/3adv2025.PNG',
+    '/img/4esc2024.PNG',
+    '/img/5adv2024.PNG',
+    '/img/6analise2023.PNG'
   ];
 
   const [isDesktop, setIsDesktop] = useState(true);
@@ -30,10 +28,8 @@ export default function Premiacao() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const groupSize = 4;
-  const totalSlides = isDesktop
-    ? Math.ceil(imageSources.length / groupSize)
-    : imageSources.length;
+  const groupSize = isDesktop ? 4 : 1;
+  const totalSlides = Math.ceil(imageSources.length / groupSize);
 
   const handleNext = () => {
     if (currentIndex < totalSlides - 1) {
@@ -58,16 +54,17 @@ export default function Premiacao() {
 
   return (
     <section id="premiacoes" className="bg-dark text-white py-16">
-      <div className="px-6 sm:px-24 mb-10">
+      <div className="px-6 sm:px-24 mb-16"> {/* aumentei de mb-10 para mb-16 */}
         <FadeInSection>
-        <h3 className="font-bodrumsans text-[18px] sm:text-[20px] tracking-widest uppercase">
-          CONQUISTAS
-        </h3>
-        <h2 className="font-dm-serif mt-2 text-[48px] sm:text-[80px] font-bold">
-          Reconhecimentos Institucionais
-        </h2>
+          <h3 className="font-bodrumsans text-[18px] sm:text-[20px] tracking-widest uppercase">
+            CONQUISTAS
+          </h3>
+          <h2 className="font-dm-serif mt-2 text-[48px] sm:text-[80px] font-bold">
+            Reconhecimentos Institucionais
+          </h2>
         </FadeInSection>
       </div>
+
       <div className="relative w-full">
         {isDesktop && (
           <>
@@ -87,7 +84,8 @@ export default function Premiacao() {
             </button>
           </>
         )}
-        <div className="px-6 sm:px-24 overflow-hidden">
+
+        <div className="px-6 sm:px-24 overflow-hidden mt-10"> {/* adicionei um mt-10 aqui */}
           {isDesktop ? (
             <div
               className="flex transition-transform duration-500 ease-in-out"
@@ -102,18 +100,18 @@ export default function Premiacao() {
                 return (
                   <div
                     key={groupIndex}
-                    className="min-w-full flex justify-center gap-x-4"
+                    className="min-w-full flex justify-center gap-x-6"
                   >
                     {group.map((src, index) => (
                       <div
                         key={index}
-                        className="w-1/4 h-[220px] flex justify-center items-center"
+                        className="w-1/4 flex justify-center items-center h-[250px]"
                       >
                         <Image
                           src={src}
                           alt={`Premiação ${start + index + 1}`}
-                          width={180}
-                          height={180}
+                          width={250}
+                          height={250}
                           className="object-contain max-w-full max-h-full"
                         />
                       </div>
@@ -138,13 +136,14 @@ export default function Premiacao() {
                     alt={`Premiação ${index + 1}`}
                     width={300}
                     height={200}
-                    className="object-contain w-full h-auto max-h-[200px]"
+                    className="object-contain w-full h-auto max-h-[250px]"
                   />
                 </div>
               ))}
             </div>
           )}
         </div>
+
         <div className="mt-20 px-6 sm:px-24">
           <div className="flex items-center gap-2 max-w-[100px] text-sm ml-0 lg:ml-0">
             <span>{currentIndex + 1}</span>
@@ -153,6 +152,7 @@ export default function Premiacao() {
           </div>
         </div>
       </div>
+
       <style jsx>{`
         .scrollbar-hide {
           scrollbar-width: none;
