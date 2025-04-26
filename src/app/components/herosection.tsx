@@ -4,12 +4,12 @@ import { Typewriter } from 'react-simple-typewriter';
 
 export default function Herosection() {
   return (
-    <section className="bg-off-white pt-20 sm:pt-20 ">
-      <div className="pl-8 sm:pl-24 mb-12">
+    <section className="bg-off-white pt-20 sm:pt-20">
+      <div className="w-full sm:pl-24 px-6 mb-12"> 
         <h2 className="font-tahoma text-dark text-xl mb-1 sm:text-[32px] sm:mb-2">
           Silva Prado Advogados
         </h2>
-        <h1 className="font-dm-serif font-bold text-[60px] sm:text-[128px] text-brown-dark leading-tight">
+        <h1 className="font-dm-serif font-bold text-[60px] sm:text-[128px] text-brown-dark leading-tight break-words">
           <Typewriter
             words={['Inovação.', 'Técnica.', 'Integridade.', 'Compliance.']}
             loop={true}
@@ -21,7 +21,7 @@ export default function Herosection() {
           />
         </h1>
       </div>
-      <div className="w-full h-[200px] sm:h-auto overflow-hidden">
+      <div className="w-full h-[300px] sm:h-[600px] overflow-hidden"> 
         <img
           src="img/fachada.png"
           alt="fachada"
