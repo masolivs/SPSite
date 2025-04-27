@@ -11,7 +11,7 @@ export default function Blog() {
   const [modal, setModal] = useState<{ type: 'success' | 'error'; message: string } | null>(null)
   const mobileScrollRef = useRef<HTMLDivElement>(null)
 
-  const blogPosts = ['/t1.png', '/t2.png', '/t1.png']
+  const blogPosts = ['posts/t1.png', 'posts/t2.png', 'posts/t1.png']
 
   useEffect(() => {
     const checkScreen = () => {

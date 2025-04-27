@@ -76,31 +76,37 @@ const Navbar = () => {
       </div>
 
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 bg-off-white z-40 md:hidden">
-          <div className="absolute top-6 right-6">
-            <button onClick={() => setIsMobileMenuOpen(false)} className="text-3xl">
-              ✕
-            </button>
+        <div className="fixed inset-0 z-40 flex md:hidden">
+          <div className="flex-1 bg-off-white relative">
+            <div className="absolute top-6 right-6">
+              <button onClick={() => setIsMobileMenuOpen(false)} className="text-3xl">
+                ✕
+              </button>
+            </div>
+            <nav className="flex flex-col justify-end items-start h-full pb-12 pl-6 gap-4 text-dark text-lg font-tahoma">
+              {renderNavItems()}
+            </nav>
           </div>
-          <nav className="flex flex-col justify-end items-start h-full pb-12 pl-6 gap-4 text-dark text-lg font-tahoma">
-            {renderNavItems()}
-            <div className="flex gap-4 pt-4">
+          <div className="w-[60px] bg-dark flex flex-col justify-center items-center py-6">
+            <div className="flex flex-col items-center gap-6 mb-4">
               <a
                 href="https://www.instagram.com/silvapradoadv/"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="text-off-white"
               >
-                <InstagramLogo size={40} weight="fill" />
+                <InstagramLogo size={32} weight="fill" />
               </a>
               <a
                 href="https://www.linkedin.com/company/silva-prado-advogados/posts/?feedView=all"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="text-off-white"
               >
-                <LinkedinLogo size={40} weight="fill" />
+                <LinkedinLogo size={32} weight="fill" />
               </a>
             </div>
-          </nav>
+          </div>
         </div>
       )}
     </header>
