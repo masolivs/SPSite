@@ -30,6 +30,8 @@ export default function EditTeam() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [employeeToDelete, setEmployeeToDelete] = useState<Employee | null>(null);
 
+  const totalSlides = Math.ceil(filteredEmployees.length / 2);
+
   const router = useRouter();
 
   useEffect(() => {
@@ -225,9 +227,11 @@ export default function EditTeam() {
         <main className="flex-1 bg-dark text-white px-8 py-12 min-h-screen relative flex items-center justify-center">
           <button
             onClick={handlePrev}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 text-white cursor-pointer"
+            className={`absolute top-1/2 -translate-y-1/2 left-4 z-20 p-2 cursor-pointer ${
+              currentIndex === 0 ? 'opacity-30' : 'opacity-100'
+            }`}
           >
-            <ArrowLeft size={32} />
+            <ArrowLeft size={48} />
           </button>
 
           <div className="flex gap-[72px] justify-center overflow-hidden px-8">
@@ -269,9 +273,11 @@ export default function EditTeam() {
 
           <button
             onClick={handleNext}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 text-white cursor-pointer"
+            className={`absolute top-1/2 -translate-y-1/2 right-4 z-20 p-2 cursor-pointer ${
+              currentIndex >= totalSlides - 1 ? 'opacity-30' : 'opacity-100'
+            }`}
           >
-            <ArrowRight size={32} />
+            <ArrowRight size={48} />
           </button>
         </main>
       </div>

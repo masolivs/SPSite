@@ -23,7 +23,6 @@ export default function Home() {
           <Team />
           <Blog />
           <Contato />
-          <Footer />
           <FloatingSocialIcons />
     </div>
   );
