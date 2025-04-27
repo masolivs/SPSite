@@ -65,10 +65,10 @@ const Navbar = () => {
   return (
     <header className="bg-off-white top-0 w-full z-50">
       <div className="max-w-7xl mx-auto px-4 py-6 flex items-center justify-center relative">
-        <nav className="hidden md:flex gap-10 text-dark text-[16px] sm:text-[24px] font-tahoma">
+        <nav className="hidden lg:flex gap-10 text-dark text-[16px] sm:text-[24px] font-tahoma">
           {renderNavItems()}
         </nav>
-        <div className="md:hidden absolute left-4">
+        <div className="lg:hidden absolute left-4">
           <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-3xl">
             ☰
           </button>
@@ -76,7 +76,7 @@ const Navbar = () => {
       </div>
 
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 flex md:hidden">
+        <div className="fixed inset-0 z-40 flex lg:hidden">
           <div className="flex-1 bg-off-white relative">
             <div className="absolute top-6 right-6">
               <button onClick={() => setIsMobileMenuOpen(false)} className="text-3xl">

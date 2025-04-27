@@ -47,7 +47,7 @@ export default function FloatingSocialIcons() {
   const iconColor = isDark ? '#ffffff' : '#000000'
 
   return (
-    <div className="fixed top-1/2 right-6 -translate-y-1/2 hidden md:flex flex-col gap-4 z-50 transition-colors duration-300">
+    <div className="fixed top-1/2 right-6 -translate-y-1/2 hidden lg:flex flex-col gap-4 z-50 transition-colors duration-300">
       <a
         href="https://www.instagram.com/silvapradoadv/"
         target="_blank"

@@ -29,7 +29,7 @@ export default function Sobre() {
               </h2>
             </FadeInSection>
             <FadeInSection>
-              <p className="font-tahoma text-dark text-[16px] mt-2 sm:text-[32px] leading-relaxed">
+              <p className="font-tahoma text-dark text-[20px] mt-2 sm:text-[32px] leading-relaxed">
                 Somos um escritório de atuação corporativa, que alia experiência prática e acadêmica
                 para oferecer soluções jurídicas claras e assertivas. Com foco no relacionamento de
                 longo prazo, acompanhamos de perto cada cliente, traduzindo cenários complexos em
