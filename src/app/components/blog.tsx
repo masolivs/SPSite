@@ -5,76 +5,76 @@ import { ArrowLeft, ArrowRight } from 'phosphor-react';
 import FadeInSection from './fadeInSection';
 
 export default function Blog() {
-  const [email, setEmail] = useState("")
-  const [isDesktop, setIsDesktop] = useState(true)
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [modal, setModal] = useState<{ type: 'success' | 'error'; message: string } | null>(null)
-  const mobileScrollRef = useRef<HTMLDivElement>(null)
+  const [email, setEmail] = useState("");
+  const [isDesktop, setIsDesktop] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [modal, setModal] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
+  const mobileScrollRef = useRef<HTMLDivElement>(null);
 
-  const blogPosts = ['posts/t1.png', 'posts/t2.png', 'posts/t1.png']
+  const blogPosts = ['posts/t1.png', 'posts/t2.png', 'posts/t1.png'];
 
   useEffect(() => {
     const checkScreen = () => {
-      setIsDesktop(window.innerWidth >= 1024)
-    }
-    checkScreen()
-    window.addEventListener('resize', checkScreen)
-    return () => window.removeEventListener('resize', checkScreen)
-  }, [])
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    checkScreen();
+    window.addEventListener('resize', checkScreen);
+    return () => window.removeEventListener('resize', checkScreen);
+  }, []);
 
   const showModal = (type: 'success' | 'error', message: string) => {
-    setModal({ type, message })
-    setTimeout(() => setModal(null), 4000)
-  }
+    setModal({ type, message });
+    setTimeout(() => setModal(null), 4000);
+  };
 
-  const itemsPerView = isDesktop ? 2 : 1
-  const totalPages = Math.ceil(blogPosts.length / itemsPerView)
-  const maxCount = isDesktop ? totalPages : blogPosts.length
+  const itemsPerView = isDesktop ? 2 : 1;
+  const totalPages = Math.ceil(blogPosts.length / itemsPerView);
+  const maxCount = isDesktop ? totalPages : blogPosts.length;
 
   const next = () => {
     if (currentIndex < totalPages - 1) {
-      setCurrentIndex(currentIndex + 1)
+      setCurrentIndex(currentIndex + 1);
     }
-  }
+  };
 
   const prev = () => {
     if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1)
+      setCurrentIndex(currentIndex - 1);
     }
-  }
+  };
 
   const handleMobileScroll = () => {
     if (mobileScrollRef.current) {
-      const scrollLeft = mobileScrollRef.current.scrollLeft
-      const slideWidth = mobileScrollRef.current.offsetWidth
-      const index = Math.round(scrollLeft / slideWidth)
-      setCurrentIndex(index)
+      const scrollLeft = mobileScrollRef.current.scrollLeft;
+      const slideWidth = mobileScrollRef.current.offsetWidth;
+      const index = Math.round(scrollLeft / slideWidth);
+      setCurrentIndex(index);
     }
-  }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       const res = await fetch('/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
-      })
+      });
 
-      const data = await res.json()
+      const data = await res.json();
 
       if (!res.ok) {
-        showModal('error', data.error || 'Erro ao inscrever.')
-        return
+        showModal('error', data.error || 'Erro ao inscrever.');
+        return;
       }
 
-      showModal('success', data.message || 'Inscrição realizada com sucesso!')
-      setEmail('')
+      showModal('success', data.message || 'Inscrição realizada com sucesso!');
+      setEmail('');
     } catch (err) {
-      console.error(err)
-      showModal('error', 'Erro ao enviar inscrição.')
+      console.error(err);
+      showModal('error', 'Erro ao enviar inscrição.');
     }
-  }
+  };
 
   return (
     <section id="blog" className="bg-white py-16 relative">
@@ -114,7 +114,7 @@ export default function Blog() {
           </FadeInSection>
         </div>
 
-        <div className="relative w-full lg:flex-1 sm:-right-[90px]">
+        <div className="relative w-full lg:flex-1 lg:-right-[90px]">
           {isDesktop && (
             <>
               <button
@@ -144,9 +144,9 @@ export default function Blog() {
                 }}
               >
                 {Array.from({ length: totalPages }).map((_, pageIndex) => {
-                  const start = pageIndex * itemsPerView
-                  const end = start + itemsPerView
-                  const groupItems = blogPosts.slice(start, end)
+                  const start = pageIndex * itemsPerView;
+                  const end = start + itemsPerView;
+                  const groupItems = blogPosts.slice(start, end);
                   return (
                     <div
                       key={pageIndex}
@@ -166,7 +166,7 @@ export default function Blog() {
                         </div>
                       ))}
                     </div>
-                  )
+                  );
                 })}
               </div>
             ) : (
@@ -241,5 +241,5 @@ export default function Blog() {
         }
       `}</style>
     </section>
-  )
+  );
 }
