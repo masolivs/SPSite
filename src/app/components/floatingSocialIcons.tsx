@@ -10,7 +10,7 @@ export default function FloatingSocialIcons() {
     const getSectionAtMiddle = () => {
       const middle = window.scrollY + window.innerHeight / 2
       const sections = [
-        { id: 'sobre', color: 'white' },
+        { id: 'sobre', color: 'black' },
         { id: 'atuacao', color: 'black' },
         { id: 'premiacoes', color: 'white' },
         { id: 'compliance', color: 'black' },
