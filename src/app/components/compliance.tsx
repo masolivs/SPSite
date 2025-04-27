@@ -7,16 +7,16 @@ export default function Compliance() {
   return (
     <section
       id="compliance"
-      className="bg-gray py-24 scroll-mt-24"
+      className="bg-gray py-18 md:py-24 scroll-mt-24"
     >
       <div className="px-6 sm:px-24">
         <FadeInSection>
-          <h3 className="font-bodrumsans text-dark text-[18px] sm:text-[20px] mb-4 tracking-widest uppercase">
+          <h3 className="font-bodrumsans text-dark text-[14px] sm:text-[20px] mb-4 tracking-widest uppercase">
             COMPLIANCE
           </h3>
         </FadeInSection>
         <FadeInSection>
-          <h2 className="font-dm-serif text-dark font-bold text-[48px] sm:text-[80px] mb-6 leading-tight">
+          <h2 className="font-dm-serif text-dark font-bold text-[40px] sm:text-[80px] mb-6 leading-tight">
             Integridade como valor essencial
           </h2>
         </FadeInSection>
