@@ -21,7 +21,7 @@ export default function Herosection() {
           />
         </h1>
       </div>
-      <div className="w-full h-[300px] sm:h-[600px] overflow-hidden"> 
+      <div className="w-full h-[300px] sm:h-[720px] overflow-hidden"> 
         <img
           src="img/fachada.png"
           alt="fachada"
