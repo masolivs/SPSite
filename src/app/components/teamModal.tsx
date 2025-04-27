@@ -76,12 +76,12 @@ export default function TeamModal({ isOpen, onClose, employee }: TeamModalProps)
 
         <div className="lg:hidden w-screen text-color-gray overflow-x-hidden">
           <div className="w-full">
-            <div className="relative w-full h-auto sm:h-[70vh]">
+            <div className="relative w-full h-[574px] sm:h-[70vh]">
               <Image
                 src={employee.image || '/default-avatar.png'}
                 alt={employee.name}
-                fill
-                className="object-contain sm:object-cover w-full h-auto sm:h-full"
+                layout="fill"
+                className="object-contain sm:object-cover"
                 priority
               />
             </div>

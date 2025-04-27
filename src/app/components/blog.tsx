@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useEffect, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight } from 'phosphor-react';
@@ -81,37 +81,37 @@ export default function Blog() {
       <div className="px-6 sm:px-24 flex flex-col lg:flex-row gap-12 items-start">
         <div className="flex-1 max-w-[600px]">
           <FadeInSection>
-          <h3 className="text-[16px] sm:text-[20px] uppercase tracking-wider font-bodrumsans mb-2">
-            BLOG
-          </h3>
-          <h2 className="font-dm-serif text-[48px] sm:text-[74px] font-bold leading-tight mb-6">
-            Publicações
-          </h2>
-          <p className="font-tahoma text-[16px] sm:text-[24px] mb-10">
-            Confira os conteúdos do nosso LinkedIn sobre temas jurídicos relevantes, reflexões e atualizações do Silva Prado.
-          </p>
-          <div className="h-[4px] bg-[#C0B9B3] w-full my-10"></div>
-          <h3 className="font-dm-serif text-[24px] sm:text-[32px] mb-2 font-bold">Newsletter</h3>
-          <p className="font-tahoma text-[16px] sm:text-[22px] mb-4">
-            Inscreva-se com seu e-mail e acompanhe as principais notícias, artigos e conteúdos do Silva Prado diretamente na sua caixa de entrada.
-          </p>
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row">
-            <input
-              type="email"
-              required
-              placeholder="Digite seu email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 p-4 bg-[#e6e1db] placeholder-black text-black font-tahoma text-base focus:outline-none"
-            />
-            <button
-              type="submit"
-              className="bg-[#bfb1a5] px-2 py-2 font-tahoma text-base hover:opacity-90 transition cursor-pointer font-bold"
-            >
-              Inscrever-se
-            </button>
-          </form>
-        </FadeInSection>
+            <h3 className="text-[14px] sm:text-[20px] uppercase tracking-wider font-bodrumsans mb-2">
+              BLOG
+            </h3>
+            <h2 className="font-dm-serif text-[40px] sm:text-[74px] font-bold leading-tight mb-6">
+              Publicações
+            </h2>
+            <p className="font-tahoma text-[18px] sm:text-[24px] mb-8">
+              Confira os conteúdos do nosso LinkedIn sobre temas jurídicos relevantes, reflexões e atualizações do Silva Prado.
+            </p>
+            <div className="h-[4px] bg-[#C0B9B3] w-full my-4"></div>
+            <h3 className="font-dm-serif text-[26px] sm:text-[32px] mb-2 font-bold">Newsletter</h3>
+            <p className="font-tahoma text-[16px] sm:text-[20px] mb-4">
+              Inscreva-se com seu e-mail e acompanhe as principais notícias, artigos e conteúdos do Silva Prado diretamente na sua caixa de entrada.
+            </p>
+            <form onSubmit={handleSubmit} className="flex flex-row flex-nowrap">
+              <input
+                type="email"
+                required
+                placeholder="Digite seu email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="flex-1 p-2 bg-[#e6e1db] placeholder-black text-black font-tahoma text-sm focus:outline-none rounded-none"
+              />
+              <button
+                type="submit"
+                className="bg-[#bfb1a5] px-4 py-2 font-tahoma text-sm hover:opacity-90 transition cursor-pointer rounded-none"
+              >
+                Inscrever-se
+              </button>
+            </form>
+          </FadeInSection>
         </div>
 
         <div className="relative w-full lg:flex-1 sm:-right-[90px]">
@@ -173,23 +173,22 @@ export default function Blog() {
               <div
                 ref={mobileScrollRef}
                 onScroll={handleMobileScroll}
-                className="overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide"
-                style={{ scrollPaddingLeft: '1rem', scrollPaddingRight: '1rem' }}
+                className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide px-6 -mx-6"
               >
-                <div className="flex gap-8 px-4">
-                  {blogPosts.map((src, index) => (
-                    <div
-                      key={index}
-                      className="snap-start shrink-0 w-full flex justify-center"
-                    >
+                {blogPosts.map((src, index) => (
+                  <div
+                    key={index}
+                    className="snap-center flex-shrink-0 w-full flex justify-center"
+                  >
+                    <div className="w-[300px] flex justify-center">
                       <img
                         src={src}
                         alt={`Post ${index}`}
-                        className="max-w-full max-h-[484px] object-contain"
+                        className="object-contain w-full h-auto max-h-[484px]"
                       />
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
             )}
           </div>
@@ -206,7 +205,7 @@ export default function Blog() {
 
       {modal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 animate-fade">
-          <div className={`bg-white  shadow-lg p-6 max-w-sm w-full text-center border-t-4 ${
+          <div className={`bg-white shadow-lg p-6 max-w-sm w-full text-center border-t-4 ${
             modal.type === 'success' ? 'border-green-500' : 'border-red-500'
           }`}>
             <div className="text-4xl mb-2">
