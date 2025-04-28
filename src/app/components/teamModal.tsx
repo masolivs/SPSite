@@ -36,7 +36,7 @@ export default function TeamModal({ isOpen, onClose, employee }: TeamModalProps)
             <h2 className="font-dm-serif text-[30px] sm:text-[48px] text-color-gray">
               {employee.name}
             </h2>
-            <p className="font-tahoma text-[20px] sm:text-[40px] sm:mb-4 text-color-gray  mb-4" >
+            <p className="font-tahoma text-[20px] sm:text-[40px] sm:mb-4 text-color-gray mb-4">
               {employee.role}
             </p>
 
@@ -75,15 +75,16 @@ export default function TeamModal({ isOpen, onClose, employee }: TeamModalProps)
         </div>
 
         <div className="lg:hidden w-screen text-color-gray overflow-x-hidden">
-          <div className="w-screen">
-            <Image
-              src={employee.image || '/default-avatar.png'}
-              alt={employee.name}
-              width={1000}
-              height={600}
-              className="w-screen h-auto object-contain"
-              priority
-            />
+          <div className="w-full">
+            <div className="relative w-full h-[574px] sm:h-[70vh]">
+              <Image
+                src={employee.image || '/default-avatar.png'}
+                alt={employee.name}
+                layout="fill"
+                className="object-contain sm:object-cover"
+                priority
+              />
+            </div>
           </div>
 
           <div className="px-4 py-6 space-y-4">

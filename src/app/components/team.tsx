@@ -97,12 +97,12 @@ export default function Team() {
     <section id="equipe" className="bg-dark text-gray py-20">
       <div className="px-6 sm:px-24 mb-10">
         <FadeInSection>
-        <h3 className="font-bodrumsans text-[18px] sm:text-[20px] tracking-widest uppercase">
-          EQUIPE
-        </h3>
-        <h1 className="font-dm-serif mt-2 text-[48px] sm:text-[80px] font-bold">
-          Conheça nossos profissionais
-        </h1>
+          <h3 className="font-bodrumsans text-[14px] sm:text-[20px] tracking-widest uppercase">
+            EQUIPE
+          </h3>
+          <h1 className="font-dm-serif mt-2 text-[40px] sm:text-[80px] font-bold">
+            Conheça nossos profissionais
+          </h1>
         </FadeInSection>
       </div>
 
@@ -141,7 +141,7 @@ export default function Team() {
                 return (
                   <div
                     key={groupIndex}
-                    className="min-w-full flex flex-shrink-0 justify-center gap-[72px] "
+                    className="min-w-full flex flex-shrink-0 justify-center gap-[72px]"
                   >
                     {group.map((employee) => (
                       <div
@@ -167,17 +167,15 @@ export default function Team() {
             <div
               ref={scrollRef}
               onScroll={handleMobileScroll}
-              className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth px-6 -mx-6 scrollbar-hide"
+              className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide px-6 -mx-6"
             >
               {employees.map((employee) => (
                 <div
                   key={employee.id}
-                  className="snap-start flex-shrink-0 w-full max-w-full flex justify-center"
+                  className="snap-center flex-shrink-0 w-full flex items-center justify-center"
+                  onClick={() => handleOpenModal(employee)}
                 >
-                  <div
-                    className="w-[320px] flex flex-col cursor-pointer"
-                    onClick={() => handleOpenModal(employee)}
-                  >
+                  <div className="w-[320px] flex flex-col cursor-pointer">
                     <div className="relative w-full h-[400px]">
                       <Image
                         src={employee.image || '/default-avatar.png'}
@@ -201,6 +199,7 @@ export default function Team() {
           </div>
         </div>
       </div>
+
       <TeamModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}

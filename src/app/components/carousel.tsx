@@ -14,13 +14,20 @@ export default function Carousel({
   itemsPerViewDesktop = 3,
   contentPadding = 'px-6 sm:px-24',
 }: CarouselProps) {
-  const [isDesktop, setIsDesktop] = useState(true);
+  const [screenSize, setScreenSize] = useState<'mobile' | 'tablet' | 'desktop'>('desktop');
   const [currentIndex, setCurrentIndex] = useState(0);
   const mobileScrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const checkScreen = () => {
-      setIsDesktop(window.innerWidth >= 1024);
+      const width = window.innerWidth;
+      if (width >= 1024) {
+        setScreenSize('desktop');
+      } else if (width >= 640) {
+        setScreenSize('tablet');
+      } else {
+        setScreenSize('mobile');
+      }
     };
 
     checkScreen();
@@ -28,19 +35,24 @@ export default function Carousel({
     return () => window.removeEventListener('resize', checkScreen);
   }, []);
 
-  const itemsPerView = isDesktop ? itemsPerViewDesktop ?? 3 : 1;
+  const itemsPerView = screenSize === 'desktop'
+    ? itemsPerViewDesktop
+    : screenSize === 'tablet'
+    ? 2
+    : 1;
+
   const totalPages = Math.ceil(items.length / itemsPerView);
-  const maxCount = isDesktop ? totalPages : items.length;
+  const maxCount = screenSize === 'desktop' ? totalPages : items.length;
 
   const next = () => {
     if (currentIndex < totalPages - 1) {
-      setCurrentIndex(currentIndex + 1);
+      setCurrentIndex((prev) => prev + 1);
     }
   };
 
   const prev = () => {
     if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
+      setCurrentIndex((prev) => prev - 1);
     }
   };
 
@@ -55,7 +67,7 @@ export default function Carousel({
 
   return (
     <div className="relative w-full overflow-hidden py-2">
-      {isDesktop && (
+      {screenSize === 'desktop' && (
         <>
           <button
             onClick={prev}
@@ -74,8 +86,9 @@ export default function Carousel({
           </button>
         </>
       )}
+
       <div className={contentPadding}>
-        {isDesktop ? (
+        {screenSize === 'desktop' ? (
           <div
             className="flex transition-transform duration-500 ease-in-out"
             style={{
@@ -87,6 +100,7 @@ export default function Carousel({
               const start = pageIndex * itemsPerView;
               const end = start + itemsPerView;
               const groupItems = items.slice(start, end);
+
               return (
                 <div
                   key={pageIndex}
@@ -95,7 +109,7 @@ export default function Carousel({
                   {groupItems.map((item, index) => (
                     <div
                       key={index}
-                      className="bg-white w-[680px] h-auto whitespace-normal break-words pr-16"
+                      className="bg-white w-full max-w-[680px] h-auto whitespace-normal break-words pr-16"
                     >
                       {item}
                     </div>
@@ -109,13 +123,13 @@ export default function Carousel({
             ref={mobileScrollRef}
             onScroll={handleMobileScroll}
             className="overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide"
-            style={{ scrollPaddingLeft: '1.5rem' }} 
+            style={{ scrollPaddingLeft: '1.5rem' }}
           >
-            <div className="flex space-x-4 ">
+            <div className="flex space-x-4">
               {items.map((item, index) => (
                 <div
                   key={index}
-                  className="snap-start shrink-0 w-full max-w-full bg-white h-auto"
+                  className="snap-start shrink-0 w-full max-w-[680px] bg-white h-auto"
                 >
                   <div className="w-full break-words whitespace-normal">
                     {item}
@@ -126,6 +140,7 @@ export default function Carousel({
           </div>
         )}
       </div>
+
       <div className="mt-10">
         <div className="flex items-center gap-2 max-w-[100px] text-sm ml-6 sm:ml-24">
           <span>{currentIndex + 1}</span>
@@ -133,6 +148,7 @@ export default function Carousel({
           <span>{maxCount}</span>
         </div>
       </div>
+
       <style jsx>{`
         .scrollbar-hide {
           scrollbar-width: none;

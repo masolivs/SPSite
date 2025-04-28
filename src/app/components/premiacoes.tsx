@@ -54,12 +54,12 @@ export default function Premiacao() {
 
   return (
     <section id="premiacoes" className="bg-dark text-white py-16">
-      <div className="px-6 sm:px-24 mb-16"> {/* aumentei de mb-10 para mb-16 */}
+      <div className="px-6 sm:px-24 mb-16"> 
         <FadeInSection>
-          <h3 className="font-bodrumsans text-[18px] sm:text-[20px] tracking-widest uppercase">
+          <h3 className="font-bodrumsans text-[14px] sm:text-[20px] tracking-widest uppercase">
             CONQUISTAS
           </h3>
-          <h2 className="font-dm-serif mt-2 text-[48px] sm:text-[80px] font-bold">
+          <h2 className="font-dm-serif mt-2 text-[40px] sm:text-[80px] font-bold">
             Reconhecimentos Institucionais
           </h2>
         </FadeInSection>
@@ -85,7 +85,7 @@ export default function Premiacao() {
           </>
         )}
 
-        <div className="px-6 sm:px-24 overflow-hidden mt-10"> {/* adicionei um mt-10 aqui */}
+        <div className="px-6 sm:px-24 overflow-hidden mt-10"> 
           {isDesktop ? (
             <div
               className="flex transition-transform duration-500 ease-in-out"

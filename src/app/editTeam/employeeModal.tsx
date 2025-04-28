@@ -71,7 +71,7 @@ export default function EmployeeModal({
           <X size={48} weight="bold" />
         </button>
 
-        <div className="hidden lg:flex flex-row items-start justify-center gap-16 text-gray px-16 pt-20">
+        <div className="hidden lg:flex flex-row items-start justify-center gap-20 text-gray px-16 pt-40">
           <div className="flex flex-col items-start w-[555px]">
             <div className="relative w-[555px] h-[770px]">
               {previewUrl ? (
@@ -105,7 +105,7 @@ export default function EmployeeModal({
             <div className="space-y-5 text-dark">
               <input
                 name="name"
-                placeholder="Nome"
+                placeholder="Insira o Nome"
                 value={form.name}
                 onChange={handleChange}
                 className="w-full p-3 bg-off-white outline-none text-lg"
@@ -113,7 +113,7 @@ export default function EmployeeModal({
               />
               <input
                 name="role"
-                placeholder="Cargo"
+                placeholder="Insira o Cargo"
                 value={form.role}
                 onChange={handleChange}
                 className="w-full p-3 bg-off-white outline-none text-lg"
@@ -121,22 +121,22 @@ export default function EmployeeModal({
               />
               <textarea
                 name="description"
-                placeholder="Mini currículo"
+                placeholder="Insira o Mini currículo"
                 value={form.description}
                 onChange={handleChange}
-                className="w-full h-[300px] p-3 bg-off-white resize-none outline-none text-lg"
+                className="w-full h-[480px] p-3 bg-off-white resize-none outline-none text-lg"
                 required
               />
               <input
                 name="linkedin"
-                placeholder="LinkedIn"
+                placeholder="Insira o link do LinkedIn"
                 value={form.linkedin}
                 onChange={handleChange}
                 className="w-full p-3 bg-off-white outline-none text-lg"
                 required
               />
             </div>
-            <div className="mt-6 flex gap-4 justify-start">
+            <div className="mt-6 flex gap-4 justify-center">
               <button
                 type="submit"
                 disabled={loading}

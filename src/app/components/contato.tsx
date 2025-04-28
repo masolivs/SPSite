@@ -7,10 +7,10 @@ export default function Contato() {
     <section id="contato" className="bg-dark text-white py-16">
       <div className="px-6 sm:px-24 mb-2">
         <FadeInSection>
-          <h3 className="font-bodrumsans text-[18px] sm:text-[20px] tracking-widest text-light uppercase">
+          <h3 className="font-bodrumsans text-[14px] sm:text-[20px] tracking-widest text-light uppercase">
             FALE CONOSCO
           </h3>
-          <h2 className="font-dm-serif mt-2 text-[48px] sm:text-[80px] text-light font-bold">
+          <h2 className="font-dm-serif mt-2 text-[40px] sm:text-[80px] text-light font-bold mb-6">
             Contato
           </h2>
         </FadeInSection>
@@ -32,24 +32,24 @@ export default function Contato() {
         <div className="flex-1 lg:flex-[0.9] px-6 sm:px-24 font-tahoma text-light space-y-10 lg:self-center">
           <FadeInSection>
             <div>
-              <h3 className="font-bold sm:text-[35px] text-2xl">Email</h3>
-              <p className="sm:text-3xl text-lg">contato@silvapradoadv.com.br</p>
+              <h3 className="font-bold sm:text-[35px] text-[20px]">Email</h3>
+              <p className="sm:text-[32px] text-[18px]">contato@silvapradoadv.com.br</p>
             </div>
           </FadeInSection>
 
           <FadeInSection>
             <div>
-              <h3 className="font-bold sm:text-[35px] text-2xl">Endereço</h3>
-              <p className="sm:text-3xl text-lg">
-                St. de Habitações Individuais Sul QI 19 - Lago Sul, Brasília - DF
+              <h3 className="font-bold sm:text-[35px] text-[20px]">Endereço</h3>
+              <p className="sm:text-3xl text-[18px]">
+                St. de Habitações Individuais Sul QI 19, Lago Sul, Brasília/DF
               </p>
             </div>
           </FadeInSection>
 
           <FadeInSection>
             <div>
-              <h3 className="font-bold sm:text-[35px] text-2xl">Horário de Funcionamento</h3>
-              <p className="sm:text-3xl text-lg">
+              <h3 className="font-bold sm:text-[35px] text-[20px]">Horário de Funcionamento</h3>
+              <p className="sm:text-3xl text-[18px]">
                 Segunda a sexta, de 8h às 18h.
               </p>
             </div>
