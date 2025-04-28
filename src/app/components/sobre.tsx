@@ -12,7 +12,7 @@ export default function Sobre() {
         <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-y-16 gap-x-8 lg:gap-x-40 items-center">
           <div>
             <img
-              src="/img/sobre.jpg"
+              src="/imgprov.png"
               alt="Sobre nós"
               className="w-full max-w-full object-cover aspect-[16/10] lg:h-[545px] border-4 border-dark"
             />

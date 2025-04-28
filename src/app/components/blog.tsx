@@ -5,7 +5,7 @@ import { ArrowLeft, ArrowRight } from 'phosphor-react';
 import FadeInSection from './fadeInSection';
 
 export default function Blog() {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const [isDesktop, setIsDesktop] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [modal, setModal] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
@@ -79,7 +79,7 @@ export default function Blog() {
   return (
     <section id="blog" className="bg-white py-16 relative">
       <div className="px-6 sm:px-24 flex flex-col lg:flex-row gap-12 items-start">
-        <div className="flex-1 max-w-[600px]">
+        <div className="flex-1 basis-1/2 max-w-[680px]">
           <FadeInSection>
             <h3 className="text-[14px] sm:text-[20px] uppercase tracking-wider font-bodrumsans mb-2">
               BLOG
@@ -91,7 +91,9 @@ export default function Blog() {
               Confira os conteúdos do nosso LinkedIn sobre temas jurídicos relevantes, reflexões e atualizações do Silva Prado.
             </p>
             <div className="h-[4px] bg-[#C0B9B3] w-full my-4"></div>
-            <h3 className="font-dm-serif text-[26px] sm:text-[32px] mb-2 font-bold">Newsletter</h3>
+            <h3 className="font-dm-serif text-[26px] sm:text-[32px] mb-2 font-bold">
+              Newsletter
+            </h3>
             <p className="font-tahoma text-[16px] sm:text-[20px] mb-4">
               Inscreva-se com seu e-mail e acompanhe as principais notícias, artigos e conteúdos do Silva Prado diretamente na sua caixa de entrada.
             </p>
@@ -114,20 +116,20 @@ export default function Blog() {
           </FadeInSection>
         </div>
 
-        <div className="relative w-full lg:flex-1 lg:-right-[90px]">
+        <div className="relative flex-1 w-full ">
           {isDesktop && (
             <>
               <button
                 onClick={prev}
                 disabled={currentIndex === 0}
-                className="absolute top-1/2 -translate-y-1/2 left-6 z-20 p-2 text-black disabled:opacity-30 cursor-pointer"
+                className="absolute top-1/2 -translate-y-1/2 left-4 z-20 p-2 text-black disabled:opacity-30 cursor-pointer"
               >
                 <ArrowLeft size={48} />
               </button>
               <button
                 onClick={next}
                 disabled={currentIndex >= totalPages - 1}
-                className="absolute top-1/2 -translate-y-1/2 right-6 z-20 p-2 text-black disabled:opacity-30 cursor-pointer"
+                className="absolute top-1/2 -translate-y-1/2 right-4 z-20 p-2 text-black disabled:opacity-30 cursor-pointer"
               >
                 <ArrowRight size={48} />
               </button>
@@ -205,12 +207,12 @@ export default function Blog() {
 
       {modal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 animate-fade">
-          <div className={`bg-white shadow-lg p-6 max-w-sm w-full text-center border-t-4 ${
-            modal.type === 'success' ? 'border-green-500' : 'border-red-500'
-          }`}>
-            <div className="text-4xl mb-2">
-              {modal.type === 'success' ? '✅' : '❌'}
-            </div>
+          <div
+            className={`bg-white shadow-lg p-6 max-w-sm w-full text-center border-t-4 ${
+              modal.type === 'success' ? 'border-green-500' : 'border-red-500'
+            }`}
+          >
+            <div className="text-4xl mb-2">{modal.type === 'success' ? '✅' : '❌'}</div>
             <p className="text-lg font-medium text-dark mb-4">{modal.message}</p>
             <button
               onClick={() => setModal(null)}

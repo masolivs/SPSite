@@ -63,7 +63,7 @@ const Navbar = () => {
     ))
 
   return (
-    <header className="bg-off-white top-0 w-full z-50">
+    <header className="bg-off-white  w-full z-50 fixed">
       <div className="max-w-7xl mx-auto px-4 py-6 flex items-center justify-center relative">
         <nav className="hidden lg:flex gap-10 text-dark text-[16px] sm:text-[24px] font-tahoma">
           {renderNavItems()}
