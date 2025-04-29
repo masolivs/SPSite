@@ -218,7 +218,7 @@ export default function EditTeam() {
 
           <button
             onClick={() => supabase.auth.signOut().then(() => router.push('/login'))}
-            className="mb-6 bg-white text-dark font-bold text-lg py-3 px-6 w-full max-w-[220px] mx-auto cursor-pointer rounded"
+            className="mb-6 bg-white text-dark font-bold text-lg py-3 px-6 w-full max-w-[220px] mx-auto cursor-pointer"
           >
             Sair
           </button>

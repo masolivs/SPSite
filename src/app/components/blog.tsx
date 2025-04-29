@@ -11,7 +11,17 @@ export default function Blog() {
   const [modal, setModal] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
   const mobileScrollRef = useRef<HTMLDivElement>(null);
 
-  const blogPosts = ['posts/t1.png', 'posts/t2.png', 'posts/t1.png'];
+  const blogPosts = [
+    { src: 'posts/post1.png', link: 'https://www.linkedin.com/posts/silva-prado-advogados_pldft-coaf-seprelad-activity-7320870221752229888-90CA' },
+    { src: 'posts/post2.png', link: 'https://www.linkedin.com/posts/silva-prado-advogados_praejaeztica-licitaaexaeles-integridade-activity-7318692484417511424-93F2' },
+    { src: 'posts/post3.png', link: 'https://www.linkedin.com/posts/silva-prado-advogados_praejaeztica-cgu-integridade-activity-7318376292737806338-fZ0l' },
+    { src: 'posts/post4.png', link: 'https://www.linkedin.com/posts/silva-prado-advogados_praejaeztica-cgu-compliance-activity-7317989803545796608-cPfb' },
+    { src: 'posts/post5.png', link: 'https://www.linkedin.com/posts/silva-prado-advogados_segurancapublica-integracaonacional-pecdaseguranca-activity-7315822132150611968-dDeY' },
+    { src: 'posts/post6.png', link: 'https://www.linkedin.com/posts/silva-prado-advogados_compliance-ue-gdpr-activity-7315434994905063425-UXE7' },
+    { src: 'posts/post7.png', link: 'https://www.linkedin.com/posts/silva-prado-advogados_governanaexacorporativa-integridade-aeztica-activity-7313928458194112513-AL_m' },
+    { src: 'posts/post8.png', link: 'https://www.linkedin.com/posts/silva-prado-advogados_esg-cop30-sustentabilidade-activity-7313244574972297216-MTOO' },
+    { src: 'posts/post9.png', link: 'https://www.linkedin.com/posts/silva-prado-advogados_anpd-ia-sandboxregulatorio-activity-7312882879879921666-fXg0' },
+  ];
 
   useEffect(() => {
     const checkScreen = () => {
@@ -28,7 +38,7 @@ export default function Blog() {
   };
 
   const itemsPerView = isDesktop ? 2 : 1;
-  const totalPages = Math.ceil(blogPosts.length / itemsPerView);
+  const totalPages = isDesktop ? Math.ceil(blogPosts.length / 2) : blogPosts.length;
   const maxCount = isDesktop ? totalPages : blogPosts.length;
 
   const next = () => {
@@ -79,7 +89,7 @@ export default function Blog() {
   return (
     <section id="blog" className="bg-white py-16 relative">
       <div className="px-6 sm:px-24 flex flex-col lg:flex-row gap-12 items-start">
-        <div className="flex-1 basis-1/2 max-w-[680px]">
+        <div className="flex-1 basis-1/2 max-w-[480px]">
           <FadeInSection>
             <h3 className="text-[14px] sm:text-[20px] uppercase tracking-wider font-bodrumsans mb-2">
               BLOG
@@ -116,7 +126,7 @@ export default function Blog() {
           </FadeInSection>
         </div>
 
-        <div className="relative flex-1 w-full ">
+        <div className="relative w-full max-w-[1200px] mx-auto">
           {isDesktop && (
             <>
               <button
@@ -146,8 +156,8 @@ export default function Blog() {
                 }}
               >
                 {Array.from({ length: totalPages }).map((_, pageIndex) => {
-                  const start = pageIndex * itemsPerView;
-                  const end = start + itemsPerView;
+                  const start = pageIndex * 2;
+                  const end = start + 2;
                   const groupItems = blogPosts.slice(start, end);
                   return (
                     <div
@@ -155,16 +165,18 @@ export default function Blog() {
                       className="flex flex-shrink-0 justify-center items-center gap-12"
                       style={{ width: `${100 / totalPages}%` }}
                     >
-                      {groupItems.map((src, index) => (
+                      {groupItems.map((post, index) => (
                         <div
                           key={index}
                           className="w-[484px] h-[484px] flex justify-center"
                         >
-                          <img
-                            src={src}
-                            alt={`Post ${index}`}
-                            className="max-w-full max-h-full object-contain"
-                          />
+                          <a href={post.link} target="_blank" rel="noopener noreferrer">
+                            <img
+                              src={post.src}
+                              alt={`Post ${index}`}
+                              className="max-w-full max-h-full object-contain hover:opacity-90 transition"
+                            />
+                          </a>
                         </div>
                       ))}
                     </div>
@@ -177,17 +189,19 @@ export default function Blog() {
                 onScroll={handleMobileScroll}
                 className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide px-6 -mx-6"
               >
-                {blogPosts.map((src, index) => (
+                {blogPosts.map((post, index) => (
                   <div
                     key={index}
                     className="snap-center flex-shrink-0 w-full flex justify-center"
                   >
                     <div className="w-[300px] flex justify-center">
-                      <img
-                        src={src}
-                        alt={`Post ${index}`}
-                        className="object-contain w-full h-auto max-h-[484px]"
-                      />
+                      <a href={post.link} target="_blank" rel="noopener noreferrer">
+                        <img
+                          src={post.src}
+                          alt={`Post ${index}`}
+                          className="object-contain w-full h-auto max-h-[484px] hover:opacity-90 transition"
+                        />
+                      </a>
                     </div>
                   </div>
                 ))}

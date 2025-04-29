@@ -3,6 +3,7 @@
 import Navbar from "../components/navbar";
 import Link from "next/link";
 import Image from "next/image";
+import { ComplianceTeam } from "./ComplianceTeam";
 
 export default function CompliancePage() {
   return (
@@ -48,14 +49,7 @@ export default function CompliancePage() {
               O Comitê é composto pelos dois sócios-fundadores e um advogado associado:
             </p>
             <div className="flex mt-16 mb-16 justify-center">
-              <div className="inline-block border-4 border-dark">
-                <Image 
-                  src="/img/diagrama.png" 
-                  width={836} 
-                  height={199} 
-                  alt="Diagrama Comitê de Ética" 
-                />
-              </div>
+              <ComplianceTeam/>
             </div>
             
             <p className="font-tahoma text-dark text-[20px] sm:text-[32px] text-justify">
@@ -77,9 +71,9 @@ export default function CompliancePage() {
               <p className="font-tahoma text-dark text-[20px] sm:text-[24px] text-justify">
                 O Código de Conduta é o principal documento do nosso Programa de Compliance. Nele, detalhamos as regras de conduta que orientam a atuação de nossos colaboradores e terceiros.
               </p>
-              <div className="w-full max-w-[313px] h-[339px] mx-auto">
+              <div className="w-full max-w-[313px] md:max-w-[600px] h-[339px] md:h-[500px] mx-auto">
                 <iframe
-                  src="/docs/Silva Prado_Código de Conduta - Silva Prado - versão do site_ 3ª ed_13.02.2025.pptx.pptx.pdf"
+                  src="/docs/Silva Prado_Código de Conduta - Silva Prado - versão do site_ 3ª ed_13.02.2025.pptx.pptx.pdf#zoom=30"
                   className="w-full h-full"
                   title="Código de Conduta"
                 />
@@ -90,7 +84,6 @@ export default function CompliancePage() {
                 </div>
               </div>
             </div>
-
             <div className="space-y-4">
               <h2 className="font-dm-serif text-[#625140] text-[32px] sm:text-[40px] font-bold">
                 Código de Conduta para Terceiros
@@ -98,9 +91,9 @@ export default function CompliancePage() {
               <p className="font-tahoma text-dark text-[20px] sm:text-[24px] text-justify">
                 O Silva Prado também tem o Código de Conduta para Terceiros, que apresenta as condutas específicas esperadas dos fornecedores e parceiros de negócios com os quais nos relacionamos.
               </p>
-              <div className="w-full max-w-[313px] h-[339px] mx-auto">
+              <div className="w-full max-w-[313px] md:max-w-[600px] h-[339px] md:h-[500px] mx-auto">
                 <iframe
-                  src="/docs/Silva Prado_Código de Conduta para Terceiros - Silva Prado - versão do site_ 1ª ed_13.02.2025.pptx.ppt.pdf"
+                  src="/docs/Silva Prado_Código de Conduta para Terceiros - Silva Prado - versão do site_ 1ª ed_13.02.2025.pptx.ppt.pdf#zoom=30"
                   className="w-full h-full"
                   title="Código de Conduta para Terceiros"
                 />
@@ -148,7 +141,7 @@ export default function CompliancePage() {
              <br /><br />
              O Canal também poderá ser utilizado para fazer denúncias relacionadas a violações de direitos humanos e à degradação do meio ambiente impactado pelas atividades do Silva Prado.
             </p>
-            <div className="bg-white p-6 mt-4 w-full md:w-[500px]">
+            <div className="bg-white p-6 mt-10 mb-10 w-full  md:w-[500px]">
               <p className="font-tahoma text-dark text-[18px] sm:text-[20px]">
                 Entre em contato com o Comitê de Ética:
               </p>
@@ -179,7 +172,7 @@ export default function CompliancePage() {
               Acreditamos que integridade e transparência caminham juntas. É possível verificar nossos patrocínios realizados aqui:
             </p>
             <Link href="/docs/Silva Prado_Tabela de Patrocínios do escritório - item 23.1.8  - Página1.pdf" target="_blank">
-              <div className="bg-black text-white font-bold text-center px-4 md:px-2 py-3 hover:opacity-80 transition w-full sm:w-[400px] ">
+              <div className="bg-dark text-white font-bold text-center  mt-10 mb-10 px-4 md:px-2 py-3 hover:opacity-80 transition w-full sm:w-[400px] ">
                 Tabela de Doações
               </div>
             </Link>
@@ -193,9 +186,9 @@ export default function CompliancePage() {
               Estrutura Organizacional
             </h2>
             <div className="flex justify-center">
-                <div className="inline-block border-4 border-dark">
+                <div className="inline-block">
                   <Image
-                    src="/img/estrutura.png"
+                    src="/img/estrutura.jpg"
                     width={863}
                     height={448}
                     alt="Estrutura Organizacional"
