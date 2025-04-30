@@ -4,7 +4,7 @@ import { Typewriter } from 'react-simple-typewriter';
 
 export default function Herosection() {
   return (
-    <section className="bg-off-white pt-20 sm:pt-20">
+    <section className="bg-off-white pt-32 sm:pt-40">
       <div className="w-full sm:pl-24 px-6 mb-12"> 
         <h2 className="font-tahoma text-dark text-xl mb-1 sm:text-[32px] sm:mb-2">
           Silva Prado Advogados

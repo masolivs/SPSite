@@ -30,13 +30,12 @@ export default function TeamModal({ isOpen, onClose, employee }: TeamModalProps)
         >
           <X size={48} weight="bold" />
         </button>
-
-        <div className="hidden lg:flex flex-row items-start justify-end gap-16 text-gray sm:ml-20 pt-10 px-10">
+        <div className="hidden lg:flex flex-row items-start justify-end gap-16 text-gray sm:ml-20 pt-10 px-10 h-full">
           <div className="flex flex-col items-start w-[555px] ml-auto">
             <h2 className="font-dm-serif text-[30px] sm:text-[48px] text-color-gray">
               {employee.name}
             </h2>
-            <p className="font-tahoma text-[20px] sm:text-[40px] sm:mb-4 text-color-gray mb-4">
+            <p className="font-tahoma text-[20px] sm:text-[32px] mb-4 text-color-gray">
               {employee.role}
             </p>
 
@@ -64,25 +63,30 @@ export default function TeamModal({ isOpen, onClose, employee }: TeamModalProps)
               />
             </a>
           </div>
-
-          <div className="flex-1 h-[770px] flex items-center">
-            <div className="overflow-y-auto max-h-[600px] pr-2 scrollbar-hide">
-              <p className="text-color-gray text-[40px] leading-relaxed whitespace-pre-line">
+          <div className="flex-1 h-[770px] relative">
+            <div className="absolute top-1/2 transform -translate-y-[30%] pr-4 overflow-y-auto scrollbar-hide">
+              <p className="text-color-gray text-[30px] leading-relaxed whitespace-pre-line">
                 {employee.description}
               </p>
             </div>
           </div>
         </div>
-
         <div className="lg:hidden w-screen text-color-gray overflow-x-hidden">
           <div className="w-full">
-            <div className="relative w-full h-[574px] sm:h-[70vh]">
+            <div className="relative w-screen h-[45vh] sm:h-[70vh] overflow-hidden">
               <Image
                 src={employee.image || '/default-avatar.png'}
                 alt={employee.name}
-                layout="fill"
-                className="object-contain sm:object-cover"
+                fill
+                className="object-cover object-center"
                 priority
+                sizes="100vw"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                }}
               />
             </div>
           </div>
@@ -91,11 +95,11 @@ export default function TeamModal({ isOpen, onClose, employee }: TeamModalProps)
             <h2 className="font-dm-serif text-[28px]">
               {employee.name}
             </h2>
-            <p className="font-tahoma font-normal text-[24px]">
+            <p className="font-tahoma font-normal text-[22px]">
               {employee.role}
             </p>
 
-            <p className="text-[22px] leading-relaxed whitespace-pre-line max-h-[300px] overflow-y-auto scrollbar-hide">
+            <p className="text-[18-px] leading-relaxed whitespace-pre-line max-h-[300px] overflow-y-auto scrollbar-hide">
               {employee.description}
             </p>
 

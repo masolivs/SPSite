@@ -21,39 +21,31 @@ export default function Carousel({
   useEffect(() => {
     const checkScreen = () => {
       const width = window.innerWidth;
-      if (width >= 1024) {
-        setScreenSize('desktop');
-      } else if (width >= 640) {
-        setScreenSize('tablet');
-      } else {
-        setScreenSize('mobile');
-      }
+      if (width >= 1024) setScreenSize('desktop');
+      else if (width >= 640) setScreenSize('tablet');
+      else setScreenSize('mobile');
     };
-
     checkScreen();
     window.addEventListener('resize', checkScreen);
     return () => window.removeEventListener('resize', checkScreen);
   }, []);
 
-  const itemsPerView = screenSize === 'desktop'
-    ? itemsPerViewDesktop
-    : screenSize === 'tablet'
-    ? 2
-    : 1;
+  const itemsPerView =
+    screenSize === 'desktop'
+      ? itemsPerViewDesktop
+      : screenSize === 'tablet'
+      ? 2
+      : 1;
 
   const totalPages = Math.ceil(items.length / itemsPerView);
   const maxCount = screenSize === 'desktop' ? totalPages : items.length;
 
   const next = () => {
-    if (currentIndex < totalPages - 1) {
-      setCurrentIndex((prev) => prev + 1);
-    }
+    if (currentIndex < totalPages - 1) setCurrentIndex((prev) => prev + 1);
   };
 
   const prev = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex((prev) => prev - 1);
-    }
+    if (currentIndex > 0) setCurrentIndex((prev) => prev - 1);
   };
 
   const handleMobileScroll = () => {
@@ -72,51 +64,48 @@ export default function Carousel({
           <button
             onClick={prev}
             disabled={currentIndex === 0}
-            className="absolute top-1/2 -translate-y-1/2 left-4 z-20 p-2 disabled:opacity-30 cursor-pointer"
+            className="absolute top-1/2 -translate-y-1/2 left-6 z-20 p-2 disabled:opacity-30 cursor-pointer"
           >
             <ArrowLeft size={48} weight="light" />
           </button>
-
           <button
             onClick={next}
             disabled={currentIndex >= totalPages - 1}
-            className="absolute top-1/2 -translate-y-1/2 right-4 z-20 p-2 disabled:opacity-30 cursor-pointer"
+            className="absolute top-1/2 -translate-y-1/2 right-6 z-20 p-2 disabled:opacity-30 cursor-pointer"
           >
             <ArrowRight size={48} weight="light" />
           </button>
         </>
       )}
-
       <div className={contentPadding}>
         {screenSize === 'desktop' ? (
-          <div
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{
-              transform: `translateX(-${currentIndex * 100}%)`,
-              width: `${totalPages * 100}%`,
-            }}
-          >
-            {Array.from({ length: totalPages }).map((_, pageIndex) => {
-              const start = pageIndex * itemsPerView;
-              const end = start + itemsPerView;
-              const groupItems = items.slice(start, end);
-
-              return (
-                <div
-                  key={pageIndex}
-                  className="flex flex-shrink-0 w-full justify-start gap-6"
-                >
-                  {groupItems.map((item, index) => (
-                    <div
-                      key={index}
-                      className="bg-white w-full max-w-[680px] h-auto whitespace-normal break-words pr-16"
-                    >
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              );
-            })}
+          <div className="overflow-hidden w-full">
+            <div
+              className="flex transition-transform duration-500 ease-in-out w-full"
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              {Array.from({ length: totalPages }).map((_, pageIndex) => {
+                const start = pageIndex * itemsPerView;
+                const end = start + itemsPerView;
+                const groupItems = items.slice(start, end);
+                return (
+                  <div
+                    key={pageIndex}
+                    className="flex flex-shrink-0 justify-between w-full gap-16"
+                  >
+                    {groupItems.map((item, index) => (
+                      <div
+                        key={index}
+                        className="bg-white h-auto whitespace-normal break-words flex-1"
+                        style={{ width: 'clamp(300px, 30vw, 580px)' }}
+                      >
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         ) : (
           <div
@@ -131,16 +120,13 @@ export default function Carousel({
                   key={index}
                   className="snap-start shrink-0 w-full max-w-[680px] bg-white h-auto"
                 >
-                  <div className="w-full break-words whitespace-normal">
-                    {item}
-                  </div>
+                  <div className="w-full break-words whitespace-normal">{item}</div>
                 </div>
               ))}
             </div>
           </div>
         )}
       </div>
-
       <div className="mt-10">
         <div className="flex items-center gap-2 max-w-[100px] text-sm ml-6 sm:ml-24">
           <span>{currentIndex + 1}</span>
@@ -148,7 +134,6 @@ export default function Carousel({
           <span>{maxCount}</span>
         </div>
       </div>
-
       <style jsx>{`
         .scrollbar-hide {
           scrollbar-width: none;
