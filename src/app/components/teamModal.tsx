@@ -55,7 +55,7 @@ export default function TeamModal({ isOpen, onClose, employee }: TeamModalProps)
               className="mt-4 inline-block"
             >
               <Image
-                src="/linkedin.png"
+                src="/img/linkedin.png"
                 alt="LinkedIn"
                 width={49}
                 height={49}
