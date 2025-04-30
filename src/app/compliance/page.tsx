@@ -141,11 +141,11 @@ export default function CompliancePage() {
              <br /><br />
              O Canal também poderá ser utilizado para fazer denúncias relacionadas a violações de direitos humanos e à degradação do meio ambiente impactado pelas atividades do Silva Prado.
             </p>
-            <div className="bg-white p-6 mt-10 mb-10 w-full  md:w-[500px]">
-              <p className="font-tahoma text-dark text-[18px] sm:text-[20px]">
+            <div className="bg-dark p-6 mt-10 mb-10 w-full  md:w-[500px]">
+              <p className="font-tahoma text-off-white text-[18px] sm:text-[20px]">
                 Entre em contato com o Comitê de Ética:
               </p>
-              <p className="mt-4 font-bold text-[18px] sm:text-[20px] text-brown-dark break-words">
+              <p className="mt-4 font-bold text-[18px] sm:text-[20px] text-off-white break-words">
                 <a href="mailto:compliance@silvapradoadv.com.br">
                   compliance@silvapradoadv.com.br
                 </a>
@@ -188,7 +188,7 @@ export default function CompliancePage() {
             <div className="flex justify-center">
                 <div className="inline-block">
                   <Image
-                    src="/img/estrutura.jpg"
+                    src="/img/estrutura.png"
                     width={863}
                     height={448}
                     alt="Estrutura Organizacional"
