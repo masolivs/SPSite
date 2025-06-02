@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { X } from 'phosphor-react';
+import { useEffect, useState } from 'react';
 
 interface TeamModalProps {
   isOpen: boolean;
@@ -16,13 +17,27 @@ interface TeamModalProps {
 }
 
 export default function TeamModal({ isOpen, onClose, employee }: TeamModalProps) {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => setShow(true), 10);
+    } else {
+      setShow(false);
+    }
+  }, [isOpen]);
+
   if (!isOpen || !employee) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-stretch justify-end overflow-hidden">
       <div className="absolute inset-0 bg-black/60 z-40" onClick={onClose} />
 
-      <div className="relative bg-dark w-full lg:w-2/3 h-full z-50 overflow-y-auto overflow-x-hidden">
+      <div
+        className={`relative bg-dark w-full lg:w-2/3 h-full z-50 overflow-y-auto overflow-x-hidden transition-all duration-500 ease-in-out transform ${
+          show ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+        }`}
+      >
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray z-50 cursor-pointer"
@@ -30,16 +45,20 @@ export default function TeamModal({ isOpen, onClose, employee }: TeamModalProps)
         >
           <X size={48} weight="bold" />
         </button>
-        <div className="hidden lg:flex flex-row items-start justify-end gap-16 text-gray sm:ml-20 pt-10 px-10 h-full">
-          <div className="flex flex-col items-start w-[555px] ml-auto">
-            <h2 className="font-dm-serif text-[30px] sm:text-[48px] text-color-gray">
+
+        <div className="hidden lg:flex flex-row items-center justify-end gap-12 text-gray sm:ml-20 pt-10 px-10 h-full">
+          <div
+            className="flex flex-col items-start ml-auto"
+            style={{ width: 'clamp(320px, 48%, 580px)' }}
+          >
+            <h2 className="font-dm-serif text-[28px] sm:text-[36px] text-color-gray leading-tight">
               {employee.name}
             </h2>
-            <p className="font-tahoma text-[20px] sm:text-[32px] mb-4 text-color-gray">
+            <p className="font-tahoma text-[18px] sm:text-[24px] mb-4 text-color-gray">
               {employee.role}
             </p>
 
-            <div className="relative w-[555px] h-[770px]">
+            <div className="relative w-full" style={{ aspectRatio: '555 / 770' }}>
               <Image
                 src={employee.image || '/default-avatar.png'}
                 alt={employee.name}
@@ -63,14 +82,14 @@ export default function TeamModal({ isOpen, onClose, employee }: TeamModalProps)
               />
             </a>
           </div>
-          <div className="flex-1 h-[770px] relative">
-            <div className="absolute top-1/2 transform -translate-y-[30%] pr-4 overflow-y-auto scrollbar-hide">
-              <p className="text-color-gray text-[30px] leading-relaxed whitespace-pre-line">
-                {employee.description}
-              </p>
+
+          <div className="flex-1 flex items-center overflow-y-auto max-h-[90vh] scrollbar-hide pr-4">
+            <div className="text-color-gray text-[clamp(18px,1.2vw,20px)] leading-relaxed whitespace-pre-line">
+              {employee.description}
             </div>
           </div>
         </div>
+
         <div className="lg:hidden w-screen text-color-gray overflow-x-hidden">
           <div className="w-full">
             <div className="relative w-screen h-[45vh] sm:h-[70vh] overflow-hidden">
@@ -92,14 +111,14 @@ export default function TeamModal({ isOpen, onClose, employee }: TeamModalProps)
           </div>
 
           <div className="px-4 py-6 space-y-4">
-            <h2 className="font-dm-serif text-[28px]">
+            <h2 className="font-dm-serif text-[26px]">
               {employee.name}
             </h2>
-            <p className="font-tahoma font-normal text-[22px]">
+            <p className="font-tahoma font-normal text-[20px]">
               {employee.role}
             </p>
 
-            <p className="text-[18-px] leading-relaxed whitespace-pre-line max-h-[300px] overflow-y-auto scrollbar-hide">
+            <p className="text-[18px] leading-relaxed whitespace-pre-line max-h-[300px] overflow-y-auto scrollbar-hide">
               {employee.description}
             </p>
 
@@ -110,7 +129,7 @@ export default function TeamModal({ isOpen, onClose, employee }: TeamModalProps)
               className="inline-block"
             >
               <Image
-                src="/linkedin.png"
+                src="/img/linkedin.png"
                 alt="LinkedIn"
                 width={32}
                 height={32}

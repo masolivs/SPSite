@@ -9,8 +9,7 @@ export default function Atuacao() {
       <FadeInSection>
         <h3 className="text-[24px] md:text-[36px] font-bold font-dm-serif mb-2">Compliance Anticorrupção</h3>
         <p className="text-[20px] md:text-[24px] font-tahoma mt-4">
-          Elaboramos análises de riscos, códigos e políticas, due diligences, treinamentos, comunicações, além de conduzir investigações corporativas. 
-          Auxiliamos na obtenção de premiações (ex: Pró-Ética da CGU) e certificações anticorrupção (ex: ISO 37.001), e representamos organizações em inquéritos, processos sancionadores e acordos de leniência.
+          Elaboramos análises de riscos, códigos e políticas, due diligences, treinamentos, comunicações, além de conduzir investigações corporativas. Auxiliamos na obtenção de premiações (como o Pró-Ética da CGU) e certificações anticorrupção (como a ISO 37.001), e representamos organizações em inquéritos, processos sancionadores e acordos de leniência.
         </p>
       </FadeInSection>
     </div>,
@@ -43,7 +42,7 @@ export default function Atuacao() {
       <FadeInSection>
         <h3 className="text-[24px] md:text-[36px] font-bold font-dm-serif mb-2">Direito Concorrencial</h3>
         <p className="text-[20px] md:text-[24px] font-tahoma mt-4">
-          Atuamos na elaboração de defesas em inquéritos e processos administrativos perante o CADE. Prestamos assessoria em acordos de leniência, negociação de termos de compromisso de cessação e submissão de atos de concentração. Representamos organizações em ações judiciais envolvendo questões concorrenciais.
+          Atuamos na elaboração de defesas em inquéritos e processos administrativos perante o CADE, além de assessorar em acordos de leniência e negociações de termos de compromisso de cessação. Representamos organizações em ações judiciais envolvendo questões concorrenciais. Também atuamos de forma consultiva, com foco em prevenção, estruturação de programas de compliance e análise de condutas comerciais sob a ótica antitruste.
         </p>
       </FadeInSection>
     </div>,
@@ -51,7 +50,7 @@ export default function Atuacao() {
       <FadeInSection>
         <h3 className="text-[24px] md:text-[36px] font-bold font-dm-serif mb-2">ESG</h3>
         <p className="text-[20px] md:text-[24px] font-tahoma mt-4">
-          Elaboramos análise de riscos, comunicações e treinamentos de sustentabilidade. Analisamos indicadores de materialidade de ESG. Auxiliamos na definição da governança de ESG e na construção do Relatório de Sustentabilidade. Atuamos na promoção da sustentabilidade em face das exigências regulatórias de mercado.
+          Elaboramos estratégias de práticas ESG, com foco em conformidade regulatória e mitigação de riscos. Atuamos na análise de riscos socioambientais e de governança, comunicações institucionais e treinamentos. Conduzimos diagnósticos de materialidade, estruturamos a governança ESG, acompanhamos indicadores e elaboramos Relatórios de Sustentabilidade alinhados às melhores práticas.
         </p>
       </FadeInSection>
     </div>,
@@ -67,7 +66,7 @@ export default function Atuacao() {
         </FadeInSection>
         <FadeInSection>
           <h2 className="font-dm-serif mt-2 text-[40px] sm:text-[80px] font-bold leading-tight">
-            Oferecemos clareza, confiança e alto desempenho <br className="hidden sm:inline" /> em cada entrega.
+            Oferecemos clareza, confiança e alto desempenho em cada entrega.
           </h2>
         </FadeInSection>
         <FadeInSection>

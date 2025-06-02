@@ -24,77 +24,116 @@ interface Employee {
 
 export default function Team() {
   const [employees, setEmployees] = useState<Employee[]>([]);
-  const [isDesktop, setIsDesktop] = useState(true);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(1);
   const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isDesktop, setIsDesktop] = useState(true);
+  const [disableTransition, setDisableTransition] = useState(false);
+  const mobileRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 1024);
-    };
-
+    const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
-    const loadEmployees = async () => {
-      try {
-        const data = await fetchEmployees();
+    fetchEmployees()
+      .then((data: Employee[]) => {
         const sorted = data.sort(
           (a: Employee, b: Employee) =>
             new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
         );
         setEmployees(sorted);
-      } catch (error) {
-        console.error('Erro ao carregar funcionários:', error);
-      }
-    };
-
-    loadEmployees();
+      })
+      .catch(console.error);
   }, []);
 
   const groupSize = 3;
-  const totalSlides = isDesktop
-    ? Math.ceil(employees.length / groupSize)
-    : employees.length;
 
-  const handleNext = () => {
-    if (currentIndex < totalSlides - 1) {
-      setCurrentIndex((prev) => prev + 1);
+  const desktopSlides = isDesktop
+    ? Array.from({ length: Math.ceil(employees.length / groupSize) }).map((_, i) =>
+        employees.slice(i * groupSize, i * groupSize + groupSize)
+      )
+    : [];
+
+  const loopedSlides = isDesktop
+    ? [
+        desktopSlides[desktopSlides.length - 1],
+        ...desktopSlides,
+        desktopSlides[0],
+      ]
+    : [];
+
+  const totalSlides = loopedSlides.length;
+
+  useEffect(() => {
+    if (!isDesktop) return;
+
+    if (currentIndex === 0) {
+      setTimeout(() => {
+        setDisableTransition(true);
+        setCurrentIndex(totalSlides - 2);
+      }, 700);
+    } else if (currentIndex === totalSlides - 1) {
+      setTimeout(() => {
+        setDisableTransition(true);
+        setCurrentIndex(1);
+      }, 700);
     }
-  };
+  }, [currentIndex]);
 
-  const handlePrev = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex((prev) => prev - 1);
+  useEffect(() => {
+    if (disableTransition) {
+      setTimeout(() => {
+        setDisableTransition(false);
+      }, 50);
     }
-  };
+  }, [disableTransition]);
 
-  const handleMobileScroll = () => {
-    if (scrollRef.current) {
-      const scrollLeft = scrollRef.current.scrollLeft;
-      const slideWidth = scrollRef.current.offsetWidth;
-      const index = Math.round(scrollLeft / slideWidth);
-      setCurrentIndex(index);
-    }
-  };
+  const handleNext = () => setCurrentIndex((i) => i + 1);
+  const handlePrev = () => setCurrentIndex((i) => i - 1);
 
-  const handleOpenModal = (employee: Employee) => {
+  const openModal = (employee: Employee) => {
     setSelectedEmployee(employee);
     setIsModalOpen(true);
   };
 
-  const handleCloseModal = () => {
+  const closeModal = () => {
     setSelectedEmployee(null);
     setIsModalOpen(false);
   };
 
+  const mobileSlides = [
+    employees[employees.length - 1],
+    ...employees,
+    employees[0],
+  ];
+
+  const handleMobileScroll = () => {
+    if (!mobileRef.current) return;
+    const width = mobileRef.current.offsetWidth;
+    const index = Math.round(mobileRef.current.scrollLeft / width);
+
+    if (index === mobileSlides.length - 1) {
+      setTimeout(() => {
+        mobileRef.current?.scrollTo({ left: width, behavior: 'auto' });
+      }, 700);
+    } else if (index === 0) {
+      setTimeout(() => {
+        mobileRef.current?.scrollTo({
+          left: (mobileSlides.length - 2) * width,
+          behavior: 'auto',
+        });
+      }, 700);
+    }
+  };
+
+  const isLoading = employees.length === 0;
+
   return (
-    <section id="equipe" className="bg-dark text-gray py-20">
+    <section id="equipe" className="bg-dark text-gray py-20 overflow-hidden">
       <div className="px-6 sm:px-24 mb-10">
         <FadeInSection>
           <h3 className="font-bodrumsans text-[14px] sm:text-[20px] tracking-widest uppercase">
@@ -106,103 +145,95 @@ export default function Team() {
         </FadeInSection>
       </div>
 
-      <div className="relative w-full">
-        {isDesktop && (
-          <>
-            <button
-              onClick={handlePrev}
-              disabled={currentIndex === 0}
-              className="absolute top-1/2 -translate-y-1/2 left-4 z-20 p-2 cursor-pointer disabled:opacity-30"
-            >
-              <ArrowLeft size={48} weight="light" />
-            </button>
-            <button
-              onClick={handleNext}
-              disabled={currentIndex >= totalSlides - 1}
-              className="absolute top-1/2 -translate-y-1/2 right-4 z-20 p-2 cursor-pointer disabled:opacity-30"
-            >
-              <ArrowRight size={48} weight="light" />
-            </button>
-          </>
-        )}
-
-        <div className="px-6 sm:px-24 overflow-hidden">
+      {isLoading ? (
+        <div className="text-center text-gray text-xl py-20">Carregando equipe...</div>
+      ) : (
+        <div className="relative px-6 sm:px-24">
           {isDesktop ? (
-            <div
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{
-                transform: `translateX(-${currentIndex * 100}%)`,
-              }}
-            >
-              {Array.from({ length: totalSlides }).map((_, groupIndex) => {
-                const start = groupIndex * groupSize;
-                const end = start + groupSize;
-                const group = employees.slice(start, end);
-                return (
-                  <div
-                    key={groupIndex}
-                    className="min-w-full flex flex-shrink-0 justify-center gap-[72px]"
-                  >
-                    {group.map((employee) => (
-                      <div
-                        key={employee.id}
-                        className="w-[555px] flex flex-col cursor-pointer"
-                        onClick={() => handleOpenModal(employee)}
-                      >
-                        <div className="relative w-full h-[770px]">
-                          <Image
-                            src={employee.image || '/default-avatar.png'}
-                            alt={employee.name}
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                );
-              })}
-            </div>
+            <>
+              <button
+                onClick={handlePrev}
+                className="absolute top-1/2 left-0 -translate-y-1/2 z-10 p-2 bg-dark bg-opacity-80 rounded-full cursor-pointer"
+              >
+                <ArrowLeft size={48} />
+              </button>
+              <button
+                onClick={handleNext}
+                className="absolute top-1/2 right-0 -translate-y-1/2 z-10 p-2 bg-dark bg-opacity-80 rounded-full cursor-pointer"
+              >
+                <ArrowRight size={48} />
+              </button>
+
+              <div className="overflow-hidden w-full">
+                <div
+                  className={`flex ${
+                    !disableTransition ? 'transition-transform duration-700 ease-in-out' : ''
+                  }`}
+                  style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                >
+                  {loopedSlides.map((group, idx) => (
+                    <div
+                      key={idx}
+                      className="flex flex-shrink-0 justify-between w-full gap-8"
+                    >
+                      {Array.isArray(group) &&
+                        group.map((employee) => (
+                          <div
+                            key={employee.id}
+                            className="flex flex-col cursor-pointer w-[32%] min-w-[300px]"
+                            onClick={() => openModal(employee)}
+                          >
+                            <div
+                              className="relative w-full"
+                              style={{ aspectRatio: '555 / 770' }}
+                            >
+                              <Image
+                                src={employee.image || '/default-avatar.png'}
+                                alt={employee.name}
+                                fill
+                                className="object-cover"
+                              />
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </>
           ) : (
             <div
-              ref={scrollRef}
+              ref={mobileRef}
               onScroll={handleMobileScroll}
-              className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide px-6 -mx-6"
+              className="flex overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory"
             >
-              {employees.map((employee) => (
+              {mobileSlides.map((employee, idx) => (
                 <div
-                  key={employee.id}
-                  className="snap-center flex-shrink-0 w-full flex items-center justify-center"
-                  onClick={() => handleOpenModal(employee)}
+                  key={idx}
+                  className="snap-center shrink-0 w-full min-w-full max-w-full px-6 cursor-pointer"
+                  onClick={() => openModal(employee)}
                 >
-                  <div className="w-[320px] flex flex-col cursor-pointer">
-                    <div className="relative w-full h-[400px]">
-                      <Image
-                        src={employee.image || '/default-avatar.png'}
-                        alt={employee.name}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
+                  <div
+                    className="relative w-full"
+                    style={{ aspectRatio: '555 / 770' }}
+                  >
+                    <Image
+                      src={employee.image || '/default-avatar.png'}
+                      alt={employee.name}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                 </div>
               ))}
             </div>
           )}
         </div>
-
-        <div className="mt-10 px-6 sm:px-24 flex justify-end">
-          <div className="flex items-center gap-4 text-sm min-w-[120px]">
-            <span>{currentIndex + 1}</span>
-            <div className="h-px bg-gray flex-grow" />
-            <span>{totalSlides}</span>
-          </div>
-        </div>
-      </div>
+      )}
 
       <TeamModal
         isOpen={isModalOpen}
-        onClose={handleCloseModal}
+        onClose={closeModal}
         employee={selectedEmployee}
       />
 

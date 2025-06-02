@@ -88,8 +88,9 @@ export default function Blog() {
 
   return (
     <section id="blog" className="bg-white py-16 relative">
-      <div className="px-6 sm:px-24 flex flex-col lg:flex-row gap-12 items-start">
-        <div className="flex-1 basis-1/2 max-w-[480px]">
+      <div className="px-6 sm:px-24 flex flex-col lg:flex-row gap-16 items-start max-w-[1440px] mx-auto">
+        {/* COLUNA ESQUERDA */}
+        <div className="w-full lg:w-[40%]">
           <FadeInSection>
             <h3 className="text-[14px] sm:text-[20px] uppercase tracking-wider font-bodrumsans mb-2">
               BLOG
@@ -126,63 +127,68 @@ export default function Blog() {
           </FadeInSection>
         </div>
 
-        <div className="relative w-full max-w-[1200px] mx-auto">
+        {/* CARROSSEL */}
+        <div className="relative w-full lg:w-[60%]">
           {isDesktop && (
             <>
               <button
                 onClick={prev}
                 disabled={currentIndex === 0}
-                className="absolute top-1/2 -translate-y-1/2 left-4 z-20 p-2 text-black disabled:opacity-30 cursor-pointer"
+                className="absolute top-1/2 left-[-60px] -translate-y-1/2 z-20 text-black disabled:opacity-30 cursor-pointer"
               >
-                <ArrowLeft size={48} />
+                <ArrowLeft size={36} />
               </button>
               <button
                 onClick={next}
                 disabled={currentIndex >= totalPages - 1}
-                className="absolute top-1/2 -translate-y-1/2 right-4 z-20 p-2 text-black disabled:opacity-30 cursor-pointer"
+                className="absolute top-1/2 right-[-60px] -translate-y-1/2 z-20 text-black disabled:opacity-30 cursor-pointer"
               >
-                <ArrowRight size={48} />
+                <ArrowRight size={36} />
               </button>
             </>
           )}
 
-          <div className="overflow-hidden">
+          <div className="overflow-hidden relative">
             {isDesktop ? (
-              <div
-                className="flex transition-transform duration-500 ease-in-out"
-                style={{
-                  transform: `translateX(-${currentIndex * 100 / totalPages}%)`,
-                  width: `${totalPages * 100}%`,
-                }}
-              >
-                {Array.from({ length: totalPages }).map((_, pageIndex) => {
-                  const start = pageIndex * 2;
-                  const end = start + 2;
-                  const groupItems = blogPosts.slice(start, end);
-                  return (
-                    <div
-                      key={pageIndex}
-                      className="flex flex-shrink-0 justify-center items-center gap-12"
-                      style={{ width: `${100 / totalPages}%` }}
-                    >
-                      {groupItems.map((post, index) => (
-                        <div
-                          key={index}
-                          className="w-[484px] h-[484px] flex justify-center"
-                        >
-                          <a href={post.link} target="_blank" rel="noopener noreferrer">
-                            <img
-                              src={post.src}
-                              alt={`Post ${index}`}
-                              className="max-w-full max-h-full object-contain hover:opacity-90 transition"
-                            />
-                          </a>
-                        </div>
-                      ))}
-                    </div>
-                  );
-                })}
-              </div>
+              <>
+                <div
+                  className="flex transition-transform duration-500 ease-in-out"
+                  style={{
+                    transform: `translateX(-${currentIndex * 100 / totalPages}%)`,
+                    width: `${totalPages * 100}%`,
+                  }}
+                >
+                  {Array.from({ length: totalPages }).map((_, pageIndex) => {
+                    const start = pageIndex * 2;
+                    const end = start + 2;
+                    const groupItems = blogPosts.slice(start, end);
+                    return (
+                      <div
+                        key={pageIndex}
+                        className="flex flex-shrink-0 justify-center gap-8"
+                        style={{ width: `${100 / totalPages}%` }}
+                      >
+                        {groupItems.map((post, index) => (
+                          <div
+                            key={index}
+                            className="flex justify-center items-center h-[540px]"
+                            style={{ width: 'clamp(300px, 48%, 540px)' }}
+                          >
+                            <a href={post.link} target="_blank" rel="noopener noreferrer">
+                              <img
+                                src={post.src}
+                                alt={`Post ${index}`}
+                                className="w-full h-full object-contain hover:opacity-90 transition"
+                              />
+                            </a>
+                          </div>
+                        ))}
+                      </div>
+                    );
+                  })}
+                </div>
+
+              </>
             ) : (
               <div
                 ref={mobileScrollRef}
@@ -194,7 +200,7 @@ export default function Blog() {
                     key={index}
                     className="snap-center flex-shrink-0 w-full flex justify-center"
                   >
-                    <div className="w-[300px] flex justify-center">
+                    <div className="w-[300px]">
                       <a href={post.link} target="_blank" rel="noopener noreferrer">
                         <img
                           src={post.src}
@@ -207,14 +213,6 @@ export default function Blog() {
                 ))}
               </div>
             )}
-          </div>
-
-          <div className="mt-10 px-6 sm:px-24 flex justify-end">
-            <div className="flex items-center gap-4 text-sm min-w-[120px]">
-              <span>{currentIndex + 1}</span>
-              <div className="h-px bg-gray flex-grow" />
-              <span>{maxCount}</span>
-            </div>
           </div>
         </div>
       </div>
