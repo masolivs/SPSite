@@ -173,7 +173,7 @@ export default function CompliancePage() {
             </p>
             <Link href="/docs/Silva Prado_Tabela de Patrocínios do escritório - item 23.1.8  - Página1.pdf" target="_blank">
               <div className="bg-dark text-white font-bold text-center  mt-10 mb-10 px-4 md:px-2 py-3 hover:opacity-80 transition w-full sm:w-[400px] ">
-                Tabela de Doações
+                Tabela de Patrocínios
               </div>
             </Link>
             <p className="font-tahoma text-dark text-[20px] sm:text-[32px] text-justify mt-4">

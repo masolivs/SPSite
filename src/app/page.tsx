@@ -10,6 +10,7 @@ import Premiacao from './components/premiacoes';
 import Blog from './components/blog';
 import Team from './components/team';
 import FloatingSocialIcons from './components/floatingSocialIcons';
+<meta name="google-site-verification" content="8IUk50NF62kmlyAzJJFSvqBiromvJR4nqcsjMMMTH5c" />
 
 export default function Home() {
   return (
