@@ -19,7 +19,7 @@ export const ComplianceTeam = () => {
       <ArrowsLeftRight className="text-dark w-4 h-4 md:w-8 md:h-8" />
       <TeamMember
         name="Raíck Junio"
-        role="Advogado Associado"
+        role="Compliance Officer"
         imageUrl="/socios/RAICK.jpeg"
       />
     </div>

@@ -46,7 +46,7 @@ export default function CompliancePage() {
             <p className="font-tahoma text-dark text-[20px] sm:text-[32px] text-justify">
               O Comitê de Ética, órgão independente e autônomo, é a instância responsável pela aplicação, atualização e monitoramento do Programa de Compliance.
               <br /><br />
-              O Comitê é composto pelos dois sócios-fundadores e um advogado associado:
+              O Comitê é composto pelos dois sócios-fundadores e um advogado associado, que exerce o cargo de Compliance Officer.
             </p>
             <div className="flex mt-16 mb-16 justify-center">
               <ComplianceTeam/>
@@ -65,7 +65,7 @@ export default function CompliancePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
             <div className="space-y-4">
-              <h2 className="font-dm-serif text-[#625140] text-[32px] sm:text-[40px] font-bold">
+              <h2 className="font-dm-serif text-[#625140] text-[32px] sm:text-[38px] font-bold">
                 Código de Conduta
               </h2>
               <p className="font-tahoma text-dark text-[20px] sm:text-[24px] text-justify">
@@ -85,7 +85,7 @@ export default function CompliancePage() {
               </div>
             </div>
             <div className="space-y-4">
-              <h2 className="font-dm-serif text-[#625140] text-[32px] sm:text-[40px] font-bold">
+              <h2 className="font-dm-serif text-[#625140] text-[32px] sm:text-[38px] font-bold">
                 Código de Conduta para Terceiros
               </h2>
               <p className="font-tahoma text-dark text-[20px] sm:text-[24px] text-justify">
@@ -114,9 +114,12 @@ export default function CompliancePage() {
             Essas são as principais Políticas do nosso Programa de Compliance: 
             </p>
             <ul className="list-none font-tahoma  text-[#625140] text-[20px] sm:text-[24px] space-y-3">
-              <li>
+              <li className="flex flex-col md:flex-row md:gap-x-8 gap-y-3">
                 <Link href="/docs/Silva Prado_Política Anticorrupção e Antissuborno v4.0_13.02.2025.docx.pdf" target="_blank" className="font-bold hover:opacity-80">
                   Política Anticorrupção
+                </Link>
+                <Link href="/docs/Silva Prado_Anti-Corruption and Anti-Bribery Policy v1.0_2025.02.20.docx.pdf" target="_blank" className="font-bold hover:opacity-80">
+                  Anti-Corruption and Anti-Bribery Policy
                 </Link>
               </li>
               <li>
