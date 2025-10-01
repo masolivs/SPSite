@@ -161,6 +161,9 @@ export default function CompliancePage() {
             <br /><br />
             Há possibilidade de fazer denúncias anônimas, se o denunciante assim quiser. 
             <br /><br />
+            É possível fazer denúncias anônimas, caso o denunciante assim prefira.
+Para garantir o anonimato, recomendamos que a comunicação seja feita exclusivamente por meio de uma conta de e-mail criada especificamente para este fim, sem qualquer vínculo com informações pessoais do denunciante.
+            <br /><br />
             O Silva Prado assegura ao denunciante de boa-fé a possibilidade de acompanhamento da apuração, mediante solicitação no próprio e-mail do Canal.
             <br /><br />
             Por fim, o Canal poderá ser utilizado para tirar dúvidas relacionadas ao nosso Compliance e solicitar auxílio de como agir no dia a dia, a fim de evitar a prática de atos ilícitos.
