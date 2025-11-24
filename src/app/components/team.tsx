@@ -30,6 +30,7 @@ export default function Team() {
   const [isDesktop, setIsDesktop] = useState(true);
   const [disableTransition, setDisableTransition] = useState(false);
   const mobileRef = useRef<HTMLDivElement>(null);
+  const isProgrammaticScroll = useRef(false);
 
   useEffect(() => {
     const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
@@ -39,23 +40,22 @@ export default function Team() {
   }, []);
 
   useEffect(() => {
-  fetchEmployees()
-    .then((data: Employee[]) => {
-      const sorted = data.sort(
-        (a: Employee, b: Employee) =>
-          new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
-      );
+    fetchEmployees()
+      .then((data: Employee[]) => {
+        const sorted = data.sort(
+          (a: Employee, b: Employee) =>
+            new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+        );
 
-      if (sorted.length > 1) {
-        const [first, ...rest] = sorted;
-        setEmployees([...rest, first]);
-      } else {
-        setEmployees(sorted);
-      }
-    })
-    .catch(console.error);
+        if (sorted.length > 1) {
+          const [first, ...rest] = sorted;
+          setEmployees([...rest, first]);
+        } else {
+          setEmployees(sorted);
+        }
+      })
+      .catch(console.error);
   }, []);
-
 
   const groupSize = 3;
 
@@ -65,7 +65,7 @@ export default function Team() {
       )
     : [];
 
-  const loopedSlides = isDesktop
+  const loopedSlides = isDesktop && desktopSlides.length > 0
     ? [
         desktopSlides[desktopSlides.length - 1],
         ...desktopSlides,
@@ -76,7 +76,7 @@ export default function Team() {
   const totalSlides = loopedSlides.length;
 
   useEffect(() => {
-    if (!isDesktop) return;
+    if (!isDesktop || totalSlides === 0) return;
 
     if (currentIndex === 0) {
       setTimeout(() => {
@@ -89,7 +89,7 @@ export default function Team() {
         setCurrentIndex(1);
       }, 700);
     }
-  }, [currentIndex]);
+  }, [currentIndex, isDesktop, totalSlides]);
 
   useEffect(() => {
     if (disableTransition) {
@@ -112,28 +112,53 @@ export default function Team() {
     setIsModalOpen(false);
   };
 
-  const mobileSlides = [
-    employees[employees.length - 1],
-    ...employees,
-    employees[0],
-  ];
+  const mobileSlides =
+    employees.length > 0
+      ? [
+          employees[employees.length - 1],
+          ...employees,
+          employees[0],
+        ]
+      : [];
+
+  useEffect(() => {
+    if (!mobileRef.current || isDesktop || employees.length === 0) return;
+
+    const width = mobileRef.current.offsetWidth;
+    mobileRef.current.scrollTo({
+      left: width,
+      behavior: 'auto',
+    });
+  }, [isDesktop, employees.length]);
 
   const handleMobileScroll = () => {
-    if (!mobileRef.current) return;
+    if (!mobileRef.current || isDesktop || isProgrammaticScroll.current || mobileSlides.length === 0) {
+      return;
+    }
+
     const width = mobileRef.current.offsetWidth;
     const index = Math.round(mobileRef.current.scrollLeft / width);
 
     if (index === mobileSlides.length - 1) {
+      isProgrammaticScroll.current = true;
+      mobileRef.current.scrollTo({
+        left: width,
+        behavior: 'auto',
+      });
       setTimeout(() => {
-        mobileRef.current?.scrollTo({ left: width, behavior: 'auto' });
-      }, 700);
-    } else if (index === 0) {
+        isProgrammaticScroll.current = false;
+      }, 50);
+    }
+
+    else if (index === 0) {
+      isProgrammaticScroll.current = true;
+      mobileRef.current.scrollTo({
+        left: (mobileSlides.length - 2) * width,
+        behavior: 'auto',
+      });
       setTimeout(() => {
-        mobileRef.current?.scrollTo({
-          left: (mobileSlides.length - 2) * width,
-          behavior: 'auto',
-        });
-      }, 700);
+        isProgrammaticScroll.current = false;
+      }, 50);
     }
   };
 
@@ -174,7 +199,9 @@ export default function Team() {
               <div className="overflow-hidden w-full">
                 <div
                   className={`flex ${
-                    !disableTransition ? 'transition-transform duration-700 ease-in-out' : ''
+                    !disableTransition
+                      ? 'transition-transform duration-700 ease-in-out'
+                      : ''
                   }`}
                   style={{ transform: `translateX(-${currentIndex * 100}%)` }}
                 >
@@ -212,7 +239,7 @@ export default function Team() {
             <div
               ref={mobileRef}
               onScroll={handleMobileScroll}
-              className="flex overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory"
+              className="flex overflow-x-auto scrollbar-hide snap-x snap-mandatory"
             >
               {mobileSlides.map((employee, idx) => (
                 <div
