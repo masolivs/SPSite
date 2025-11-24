@@ -56,6 +56,14 @@ export default function Contato() {
           </FadeInSection>
         </div>
       </div>
+
+      <style jsx>{`
+        @media (min-width: 1024px) {
+          #contato {
+            zoom: 0.8; 
+          }
+        }
+      `}</style>
     </section>
   )
 }

@@ -58,7 +58,7 @@ export default function Atuacao() {
 
   return (
     <section id="atuacao" className="bg-white py-16">
-      <div className="px-6 sm:px-24 mb-10">
+      <div className="atuacao-zoom px-6 sm:px-24 mb-10">
         <FadeInSection>
           <h3 className="font-bodrumsans text-[14px] sm:text-[20px] tracking-widest uppercase">
             ATUAÇÃO
@@ -75,8 +75,14 @@ export default function Atuacao() {
           </p>
         </FadeInSection>
       </div>
-
       <Carousel items={carouselItems} contentPadding="px-6 sm:px-24" />
+      <style jsx>{`
+        @media (min-width: 1024px) {
+          .atuacao-zoom {
+            zoom: 0.8;
+          }
+        }
+      `}</style>
     </section>
   );
 }

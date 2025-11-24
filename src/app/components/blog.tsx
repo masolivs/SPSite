@@ -88,7 +88,7 @@ export default function Blog() {
 
   return (
     <section id="blog" className="bg-white py-16 relative">
-      <div className="px-6 sm:px-24 flex flex-col lg:flex-row gap-16 items-start max-w-[1440px] mx-auto">
+      <div className="px-6 sm:px-24 flex flex-col lg:flex-row gap-36 items-start max-w-[1440px] mx-auto">
         {/* COLUNA ESQUERDA */}
         <div className="w-full lg:w-[40%]">
           <FadeInSection>
@@ -127,7 +127,6 @@ export default function Blog() {
           </FadeInSection>
         </div>
 
-        {/* CARROSSEL */}
         <div className="relative w-full lg:w-[60%]">
           {isDesktop && (
             <>

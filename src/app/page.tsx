@@ -25,6 +25,7 @@ export default function Home() {
           <Blog />
           <Contato />
           <FloatingSocialIcons />
+          <Footer />
     </div>
   );
 }
