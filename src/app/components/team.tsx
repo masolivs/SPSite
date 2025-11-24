@@ -39,16 +39,23 @@ export default function Team() {
   }, []);
 
   useEffect(() => {
-    fetchEmployees()
-      .then((data: Employee[]) => {
-        const sorted = data.sort(
-          (a: Employee, b: Employee) =>
-            new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
-        );
+  fetchEmployees()
+    .then((data: Employee[]) => {
+      const sorted = data.sort(
+        (a: Employee, b: Employee) =>
+          new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+      );
+
+      if (sorted.length > 1) {
+        const [first, ...rest] = sorted;
+        setEmployees([...rest, first]);
+      } else {
         setEmployees(sorted);
-      })
-      .catch(console.error);
+      }
+    })
+    .catch(console.error);
   }, []);
+
 
   const groupSize = 3;
 
