@@ -8,7 +8,7 @@ export default function Sobre() {
       id="sobre"
       className="bg-light py-20 md:py-24 lg:py-32 scroll-mt-32"
     >
-      <div className="px-6 sm:px-24">
+      <div className="sobre-zoom px-6 sm:px-24">
         <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-y-16 gap-x-8 lg:gap-x-40 items-center">
           <div>
             <img
@@ -39,6 +39,14 @@ export default function Sobre() {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @media (min-width: 1024px) {
+          .sobre-zoom {
+            zoom: 0.8;
+          }
+        }
+      `}</style>
     </section>
   );
 }

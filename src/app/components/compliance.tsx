@@ -9,7 +9,7 @@ export default function Compliance() {
       id="compliance"
       className="bg-gray py-18 md:py-24 scroll-mt-24"
     >
-      <div className="px-6 sm:px-24">
+      <div className="compliance-zoom px-6 sm:px-24">
         <FadeInSection>
           <h3 className="font-bodrumsans text-dark text-[14px] sm:text-[20px] mb-4 tracking-widest uppercase">
             COMPLIANCE
@@ -38,6 +38,13 @@ export default function Compliance() {
           </div>
         </FadeInSection>
       </div>
+      <style jsx>{`
+        @media (min-width: 1024px) {
+          .compliance-zoom {
+            zoom: 0.8;
+          }
+        }
+      `}</style>
     </section>
   );
 }
